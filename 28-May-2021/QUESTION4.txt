@@ -1,4 +1,11 @@
 //Letter Distance
+
+//Given two words, the letter distance is calculated by taking the absolute value of the difference in character codes and summing up the difference.
+//
+//If one word is longer than another, add the difference in lengths towards the score.
+//
+//To illustrate:
+
 #include<bits/stdc++.h>
 using namespace std;
 
