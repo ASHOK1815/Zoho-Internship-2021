@@ -1,0 +1,63 @@
+//Number of Two or More Consecutive Ones
+
+
+//Create a function that counts the number of blocks of two or more adjacent 1s in an array.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int countOnes(std::vector<int> arr) {
+
+	std::vector<std::vector<int>>v;
+
+	int n=arr.size();
+	for(int i=0;i<n;i++)
+    {
+        std::vector<int>temp;
+        if(arr[i]==1 && arr[i+1]==1)
+        {
+            while(arr[i]==1 && i<n)
+            {
+                temp.push_back(arr[i]);
+
+                i++;
+            }
+
+            v.push_back(temp);
+        }
+
+
+
+    }
+
+	return v.size();
+
+
+}
+
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    vector<int>arr;
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        arr.push_back(a);
+    }
+
+
+
+    cout<<countOnes(arr);
+
+
+
+
+
+
+
+}
