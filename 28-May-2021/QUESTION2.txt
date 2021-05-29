@@ -10,11 +10,8 @@ using namespace std;
 
 float floatSum(float A,float B)
 {
-
-
-
-
-
+  
+  return A+B;
 }
 
 int main()
