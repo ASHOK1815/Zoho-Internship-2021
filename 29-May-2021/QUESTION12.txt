@@ -1,0 +1,63 @@
+//Mystery Challenge
+
+//Write a function that takes an integer n and turns it into the ouput. No further instructions.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string mysteryFunc(int n) {
+
+
+       std::string s=std::to_string(n);
+       s+="$";
+
+       std::string t = "";
+       for(int i=1;i<s.size();i++)
+       {
+
+
+            int counter = 1;
+
+            if(s[i]==s[i-1])
+            {
+
+                while(s[i]==s[i-1] && i<s.size())
+                {
+                    i++;
+                    counter++;
+                }
+               t+=std::o_string(counter)+s[i-1];
+               counter=1;
+               continue;
+
+            }
+            else
+            {
+
+
+                t+=std::to_string(counter)+s[i-1];
+
+            }
+
+
+
+
+       }
+
+
+       return t;
+    }
+
+
+
+
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    cout<<mysteryFunc(n);
+
+}

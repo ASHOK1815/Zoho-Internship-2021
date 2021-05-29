@@ -1,0 +1,92 @@
+//Mini Sudoku
+
+
+//A Sudoku is a 9x9 grid that is completed when every 3x3 square, row and column consist of the numbers 1-9.
+//
+//For this task, you will be given a completed 3x3 square, in the form of a two-dimensional array. 
+//Create a function that checks to make sure this 3x3 square contains each number from 1-9 exactly once.
+// Make sure there are no duplicates, and no numbers outside this range.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+bool isMiniSudoku(std::vector<std::vector<int>> square) {
+
+      std::map<int,int>m;
+
+      for(int i=0;i<square.size();i++)
+      {
+          for(int j=0;j<square[i].size();j++)
+          {
+             if(square[i][j]>=1 && square[i][j]<=9)
+             {
+                 m[square[i][j]]++;
+             }
+             else
+             {
+
+                 return false;
+             }
+
+
+          }
+      }
+
+
+
+      if(m.size()!=9)
+      {
+          return false;
+      }
+
+      bool flag=true;
+      for(auto x:m)
+      {
+          if(x.second>=2)
+          {
+              return false;
+          }
+
+
+      }
+
+      return true;
+
+
+}
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    std::vector<std::vector<int>>arr;
+
+
+    for(int i=0;i<n;i++)
+    {
+        vector<int>temp;
+        for(int j=0;j<n;j++)
+        {
+            int a;
+            cin>>a;
+            temp.push_back(a);
+        }
+
+        arr.push_back(temp);
+
+    }
+
+
+    cout<<isMiniSudoku(arr);
+
+
+
+
+
+
+
+
+}

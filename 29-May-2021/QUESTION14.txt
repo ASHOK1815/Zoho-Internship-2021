@@ -1,0 +1,70 @@
+//All or Nothing
+
+//Suppose a student can earn 100% on an exam by getting the answers all correct or all incorrect. Given a potentially incomplete answer key and the student's answers, write a function that determines whether 
+//or not a student can still score 100%. Questions with missing answers are marked with an underscore, "_".
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool possiblyPerfect(std::vector<char> key, std::vector<char> answers) {
+
+    int a=0;
+    int f=0;
+    int counter=0;
+
+
+    for(int i=0;i<key.size();i++)
+    {
+        if(key[i]!=' ')
+        {
+
+            if(key[i]!=answers[i])
+            {
+                f++;
+            }
+            else
+            {
+                a++;
+            }
+
+            counter++;
+        }
+
+
+    }
+
+
+     if(counter==a || counter==f)
+     {
+         return true;
+     }
+
+     return false;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    std::vector<char>key;
+    for(int i=0;i<n;i++)
+    {
+        char a;
+        cin>>a;
+        key.push_back(a);
+    }
+
+    std::vector<char>answers;
+
+    for(int i=0;i<n;i++)
+    {
+        char a;
+        cin>>a;
+        answers.push_back(a);
+    }
+
+    cout<<possiblyPerfect(key,answers);
+
+}

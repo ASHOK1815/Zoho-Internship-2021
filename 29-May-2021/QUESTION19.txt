@@ -1,0 +1,92 @@
+//All Rotations of a String
+//
+//Create a left rotation and a right rotation function that returns all the left rotations and right rotations of a string.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+std::vector<std::string> leftRotations(std::string s) {
+
+    std::vector<std::string>left;
+    left.push_back(s);
+    int n=s.size();
+    for(int i=0;i<n-1;i++)
+    {
+        std::string s1=s.substr(1);
+        char value=s[0];
+        s1+=value;
+        if(std::find (left.begin(), left.end(), s1)==left.end())
+        {
+
+           left.push_back(s1);
+        }
+
+
+        s=s1;
+    }
+
+   return left;
+
+}
+
+std::vector<std::string> rightRotations(std::string s) {
+
+    std::vector<string>right;
+    right.push_back(s);
+    int n=s.size();
+
+    for(int i=0;i<n-1;i++)
+    {
+        std::string s1=s.substr(0,n-1);
+        std::string ans="";
+
+        char value=s[n-1];
+        ans+=value+s1;
+
+         if(std::find (right.begin(), right.end(), ans) == right.end())
+        {
+
+           right.push_back(ans);
+        }
+
+
+        s=ans;
+    }
+
+    return right;
+
+}
+
+int main()
+{
+
+    string s;
+    cout<<"Enter the string"<<endl;
+    cin>>s;
+
+
+    vector<string>left=leftRotations(s);
+    vector<string>right=rightRotations(s);
+
+    cout<<"Left Rotation of string"<<endl;
+
+    for(int i=0;i<left.size();i++)
+    {
+        cout<<left[i]<<" ";
+    }
+
+
+    cout<<"Right Rotation of string"<<endl;
+
+    for(int i=0;i<right.size();i++)
+    {
+        cout<<right[i]<<" ";
+    }
+    cout<<endl;
+
+ 
+    return 0;
+
+}

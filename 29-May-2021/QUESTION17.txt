@@ -1,0 +1,82 @@
+
+//Initialize
+
+//Create a function that takes in an array of full names and returns the initials.
+#include<bits/stdc++.h>
+using namespace std;
+
+
+vector<string> initialize(vector<string> names) {
+	std::vector<string>ans;
+
+	for(int i=0;i<names.size();i++)
+    {
+        std::string s=names[i];
+        std::string result="";
+        std::string result1="";
+        bool flag=true;
+        for(int j=0;j<s.size();j++)
+        {
+            if(flag)
+            {
+
+                result+=s[j];
+                result+=".";
+                while(s[j]!=' ' && j<s.size())
+                {
+                    j++;
+                }
+                flag=false;
+
+            }
+            else{
+
+
+                result1+=s[j];
+                result1+=".";
+
+                 while(s[j]!=' ' && j<s.size())
+                {
+                    j++;
+                }
+                flag=true;
+
+            }
+
+        }
+
+        result+=" ";
+        result+=result1;
+        ans.push_back(result);
+
+    }
+
+
+    return ans;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    vector<string>names;
+    cin>>ws;
+    for(int i=0;i<n;i++)
+    {
+        string s;
+
+        getline(cin,s);
+
+        names.push_back(s);
+
+    }
+
+    vector<string>ans=initialize(names);
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+}

@@ -1,0 +1,78 @@
+//Combined Consecutive Sequence
+//Write a function that returns true if two arrays, when combined, form a consecutive sequence.
+// A consecutive sequence is a sequence without any gaps in the integers, e.g. 1, 2, 3, 4, 5 is a consecutive sequence,
+// but 1, 2, 4, 5 is not.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+bool consecutiveCombo(vector<int> a1, vector<int> a2) {
+
+
+
+	for(int i=0;i<a2.size();i++)
+    {
+        a1.push_back(a2[i]);
+    }
+
+    sort(a1.begin(),a1.end());
+    for(int i=0;i<=a1.size()-2;i++)
+    {
+
+
+        if(a1[i]!=(a1[i+1]-1))
+        {
+
+            return false;
+        }
+
+    }
+
+	return true;
+
+
+}
+
+
+int main()
+{
+    int n,m;
+    cout<<"Enter the number of element you want to enter in array1"<<endl;
+    cin>>n;
+
+    vector<int>a1;
+    vector<int>a2;
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        a1.push_back(a);
+    }
+
+    cout<<endl;
+    cout<<"Enter the number of element you want to enter in array2"<<endl;
+    cin>>m;
+
+    for(int i=0;i<m;i++)
+    {
+        int a;
+        cin>>a;
+        a2.push_back(a);
+    }
+
+
+    if(consecutiveCombo(a1,a2))
+    {
+        cout<<"true"<<endl;
+    }
+    else
+    {
+        cout<<"false"<<endl;
+    }
+
+
+}
