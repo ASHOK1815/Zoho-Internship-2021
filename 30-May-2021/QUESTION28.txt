@@ -1,0 +1,83 @@
+//Digits Battle!
+
+//Starting from the left side of an integer, adjacent digits pair up in "battle" and the larger digit wins.
+// If two digits are the same, they both lose. A lone digit automatically wins.
+//
+//Create a function that returns the victorious digits.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int battleOutcome(int num) {
+
+	std::vector<int>a;
+
+	while(num)
+    {
+        int k=num%10;
+        a.push_back(k);
+        num=num/10;
+
+    }
+
+    reverse(a.begin(),a.end());
+
+    std::string ans="";
+    if(a.size()%2==0)
+    {
+
+        for(int i=0;i<a.size();i=i+2)
+        {
+
+            if(a[i]>a[i+1])
+            {
+                ans+=to_string(a[i]);
+            }
+            else if(a[i]<a[i+1])
+            {
+                ans+=to_string(a[i+1]);
+            }
+        }
+
+
+
+    }
+    else
+    {
+        for(int i=0;i<a.size()-1;i=i+2)
+        {
+            if(a[i]>a[i+1])
+            {
+                ans+=to_string(a[i]);
+            }
+            else if(a[i]<a[i+1])
+            {
+                ans+=to_string(a[i+1]);
+            }
+
+        }
+
+
+
+        ans+=to_string(a[a.size()-1]);
+
+    }
+
+
+	return atoi(ans.c_str());
+
+}
+
+int main()
+{
+
+    int num;
+    cin>>num;
+
+    cout<<battleOutcome(num);
+
+
+
+
+    return 0;
+}

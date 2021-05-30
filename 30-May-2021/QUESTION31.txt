@@ -1,0 +1,50 @@
+//Split String by Identical Characters
+
+
+//Create a function that splits a string into an array of identical clusters.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<std::string> splitGroups(std::string s) {
+
+    vector<string>ans;
+
+
+
+    for(int i=0;i<s.size();i++)
+    {
+        string value="";
+        char v=s[i];
+        while(s[i]==v)
+        {
+            value+=s[i];
+
+            i++;
+        }
+        i--;
+        ans.push_back(value);
+
+    }
+
+
+
+    return ans;
+
+}
+
+int main()
+{
+
+    string s;
+    cin>>s;
+
+    vector<string>ans=splitGroups(s);
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+    return 0;
+}

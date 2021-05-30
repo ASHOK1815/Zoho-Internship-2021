@@ -1,0 +1,85 @@
+//Multiplicity of Numbers
+
+
+//Write a function that returns an array of elements [number, multiplicity]. The multiplicity of a number refers to the number of times it occurs in the array.
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::vector<std::vector<int>> multiplicity(std::vector<int> arr) {
+
+	std::vector<std::vector<int>>ans;
+	std::map<int,int>m;
+
+	for(int i=0;i<arr.size();i++)
+    {
+
+        m[arr[i]]++;
+    }
+
+
+    for(int i=0;i<arr.size();i++)
+    {
+        vector<int>v;
+        if(m[arr[i]]!=-1)
+        {
+
+            v.push_back(arr[i]);
+            v.push_back(m[arr[i]]);
+            m[arr[i]]=-1;
+        }
+        ans.push_back(v);
+
+
+    }
+
+
+
+	return ans;
+}
+
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+
+    vector<int>v;
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        v.push_back(a);
+    }
+
+
+    vector<vector<int>> result=multiplicity(v);
+
+    for(int i=0;i<result.size();i++)
+    {
+
+        if(result[i].size()!=0)
+        {
+             cout<<"{ ";
+             for(int j=0;j<result[i].size();j++)
+            {
+                cout<<result[i][j]<<" ";
+            }
+
+            cout<<"}";
+        }
+
+
+        cout<<endl;
+
+    }
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,49 @@
+//Atbash Cipher
+//The Atbash cipher is an encryption method in which each letter of a word is replaced with its "mirror" letter in the alphabet: A <=> Z; B <=> Y; C <=> X; etc.
+//
+//Create a function that takes a string and applies the Atbash cipher to it.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string atbash(std::string s) {
+
+  string ans="";
+  for(int i=0;i<s.size();i++)
+  {
+     if(s[i]>='a' && s[i]<='z')
+     {
+         int val=s[i]-'a';
+         ans+=char('z'-val);
+
+     }
+     else if(s[i]>='A' && s[i]<='Z')
+     {
+         int val=s[i]-'A';
+         ans+=char('Z'-val);
+     }
+     else
+     {
+         ans+=s[i];
+     }
+
+
+
+  }
+
+  return ans;
+
+}
+
+int main()
+{
+
+    std::string s;
+    getline(cin,s);
+
+
+
+   cout<<atbash(s);
+
+    return 0;
+}

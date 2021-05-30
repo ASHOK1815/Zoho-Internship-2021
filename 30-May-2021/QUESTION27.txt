@@ -1,0 +1,67 @@
+//Pronouncing the Xs]
+//
+//Create a function which replaces all the x's in the string in the following ways:
+//
+//Replace all x's with "cks" UNLESS:
+//
+//The word begins with "x", therefore replace it with "z".
+//The word is just the letter "x", therefore replace it with "ecks".
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string xPronounce(std::string s) {
+
+	int n=s.size();
+
+	string ans="";
+	for(int i=0;i<n;i++)
+    {
+        if(s[i]=='x')
+        {
+            if(s[i-1]==' ' && s[i+1]==' ' )
+            {
+                ans+="ecks";
+            }
+                else if(s[i]=='x' && s[i-1]==' ' && s[i+1]!=' ')
+            {
+                ans+="z";
+            }
+            else if(s[i]=='x' && s[i-1]!=' ' && s[i+1]!=' ')
+            {
+                ans+="cks";
+
+            }
+            else  if(s[i]=='x' && s[i-1]!=' ')
+            {
+                ans+="cks";
+            }
+        }
+
+        else{
+
+            ans+=s[i];
+        }
+
+
+
+    }
+
+	return ans;
+
+}
+
+int main()
+{
+
+    std::string s;
+    getline(cin,s);
+
+
+    cout<<xPronounce(s);
+
+
+
+
+
+}
