@@ -1,0 +1,73 @@
+//Ice Cream Sandwich
+
+//An ice cream sandwich is a string that is formed by two identical ends and a different middle.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isIcecreamSandwich(std::string s) {
+
+
+	int i=0;
+	int j=s.size()-1;
+
+
+	char check=s[0];
+	if(s[i]!=s[j])
+    {
+        return false;
+    }
+
+	bool flag=false;
+	bool flag1=true;
+	int counter=0;
+	while(i<=j)
+    {
+
+        if(s[i]==s[j])
+        {
+
+            if(s[i]!=check)
+            {
+                check=s[i];
+                counter++;
+                flag=true;
+            }
+            i++;
+            j--;
+        }
+        else
+        {
+
+            flag1=false;
+            break ;
+
+        }
+
+
+
+    }
+
+    if(counter>=2)
+    {
+        return false;
+    }
+
+	if(flag && flag1)
+    {
+        return true;
+    }
+
+	return false;
+
+
+
+}
+
+int main()
+{
+    string s;
+    cin>>s;
+
+    cout<<isIcecreamSandwich(s);
+}

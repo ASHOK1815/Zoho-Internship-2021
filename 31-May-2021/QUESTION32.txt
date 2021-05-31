@@ -1,0 +1,49 @@
+//Reverse Coding Challenge #5
+//This is a reverse coding challenge. Normally you're given explicit directions with how to create a function.
+//Here, you must generate your own function to satisfy the relationship between the inputs and outputs.
+//
+//Your task is to create a function that, when fed the inputs below, produce the sample outputs shown.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int mysteryFunc(int num) {
+
+	int k=num;
+	string ans="";
+
+	while(k)
+    {
+        int m=k%10;
+        ans+=to_string(m);
+        k=k/10;
+    }
+
+
+	reverse(ans.begin(),ans.end());
+    sort(ans.begin(),ans.end());
+	int value=atoi(ans.c_str());
+
+
+	return num-value;
+
+
+}
+
+int main()
+{
+
+   int n;
+   cin>>n;
+
+   cout<<mysteryFunc(n);
+
+
+
+
+
+
+
+
+    return 0;
+}

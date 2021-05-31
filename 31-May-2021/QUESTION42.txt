@@ -1,0 +1,101 @@
+//Math Marking
+//
+//Given an array of math equations (given as strings), return the percentage of correct answers as a string. Round to the nearest whole number.
+
+#include<bits/stdc++.h>
+#include<cmath>
+using namespace std;
+
+string markMaths(vector<string> str)
+{
+    int n=str.size();
+    double counter=0;
+	for(int i=0;i<n;i++)
+    {
+        string value=str[i];
+        string left="";
+        string middle="";
+        string right="";
+        char opertor;
+        for(int j=0;j<value.size();j++)
+        {
+
+            while(value[j]!='+' && value[j]!='-')
+            {
+                left+=value[j];
+                j++;
+
+            }
+            opertor=value[j];
+            j++;
+
+
+            while(value[j]!='=')
+            {
+                middle+=value[j];
+                j++;
+            }
+
+            j++;
+
+            while(j!=value.size())
+            {
+                right+=value[j];
+                j++;
+            }
+        }
+
+        int x = atoi(left.c_str());
+		int y = atoi(middle.c_str());
+		int z = atoi(right.c_str());
+
+		if (opertor == '-' && x - y == z)
+			counter++;
+		if (opertor == '+' && x + y == z)
+			counter++;
+
+
+    }
+
+
+    counter = counter/n;
+	counter = counter*100;
+
+
+
+    return std::to_string(round(counter))+"%";
+
+
+
+
+
+
+}
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    vector<string>arr;
+
+
+    cin>>ws;
+    for(int i=0;i<n;i++)
+    {
+        string a;
+        getline(cin,a);
+
+        arr.push_back(a);
+
+    }
+
+
+
+    cout<<markMaths(arr);
+
+
+    return 0;
+}

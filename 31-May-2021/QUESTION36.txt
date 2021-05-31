@@ -1,0 +1,92 @@
+//Number of Even or Odd Digits
+//
+//Create a function that takes in an array of integers returns the number of even or odd digits for each number, depending on the parameter.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+std::vector<int> countDigits(std::vector<int> arr, std::string type) {
+	std::vector<int>Ans;
+	if(type=="odd")
+    {
+        
+        for(int i=0;i<arr.size();i++)
+        {
+            int k=arr[i];
+            int counter=0;
+            while(k)
+            {
+                int value=k%10;
+                if(value%2!=0)
+                {
+                    counter++;
+                }
+                k=k/10;
+                
+                
+            }
+            
+            Ans.push_back(counter);
+            
+        }
+        
+        
+        
+    }
+    else if(type=="even")
+    {
+        
+         for(int i=0;i<arr.size();i++)
+        {
+            int k=arr[i];
+            int counter=0;
+            while(k)
+            {
+                int value=k%10;
+                if(value%2==0)
+                {
+                    counter++;
+                }
+                k=k/10;
+                
+                
+            }
+            
+            Ans.push_back(counter);
+            
+        }
+        
+    }
+    
+    
+    
+    return Ans;
+}
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    
+    vector<int>arr;
+    
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        arr.push_back(a);
+    }
+    
+    string type;
+    cin>>type;
+    vector<int>ans=countDigits(arr,type)
+    
+    
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+    
+}

@@ -1,0 +1,102 @@
+//Anonymous Name
+//You are in the process of creating a chat application and want to add an anonymous name feature.
+// This anonymous name feature will create an alias that consists of two capitalized words beginning with the same letter as the users first name.
+//
+//Create a function that determines if the array of users is mapped to an array of anonymous names correctly.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isCorrectAliases(vector<string> names, vector<string> aliases) {
+
+
+	bool flag=true;
+
+
+	for(int i=0;i<names.size();i++)
+    {
+        char value=names[i][0];
+
+        string ali=aliases[i];
+
+
+        if(ali[0]==value)
+        {
+            for(int i=1;i<ali.size();i++)
+            {
+                if(ali[i]==' ' && ali[i+1]!=value)
+                {
+                    flag=false;
+                    break;
+                }
+
+            }
+
+
+        }
+        else{
+
+            flag=false;
+            break;
+
+        }
+
+
+
+
+    }
+
+
+	return flag;
+
+
+}
+
+int main()
+{
+
+    int n;
+    cout<<"Enter the number of names "<<endl;
+    cin>>n;
+
+    vector<string>names;
+    cin>>ws;
+    for(int i=0;i<n;i++)
+    {
+        string s;
+        getline(cin,s);
+        names.push_back(s);
+    }
+
+
+    int m;
+    cout<<"Enter the number of aliases "<<endl;
+    cin>>m;
+
+    vector<string>aliases;
+    cin>>ws;
+    for(int i=0;i<m;i++)
+    {
+        string s;
+        getline(cin,s);
+        aliases.push_back(s);
+    }
+
+
+
+    if(isCorrectAliases(names,aliases))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+
+    return 0;
+}
