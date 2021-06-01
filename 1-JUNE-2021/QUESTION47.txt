@@ -1,0 +1,47 @@
+//Reverse Coding Challenge #4
+
+
+//This is a reverse coding challenge. Normally you're given explicit directions with how to create a function.
+// Here, you must generate your own function to satisfy the relationship between the inputs and outputs.
+//
+//Your task is to create a function that, when fed the inputs below, produce the sample outputs shown.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+std::vector<int> mysteryFunc(std::string str) {
+
+
+    vector<int>Ans;
+    int n=str.size();
+    for(int i=0;i<n;i++)
+    {
+          int value=str[i]%n;
+          int check=str[i];
+          cout<<check<<endl;
+
+        Ans.push_back(value);
+    }
+
+    return Ans;
+}
+
+int main()
+{
+
+   string s;
+   cin>>s;
+
+   vector<int>ans=mysteryFunc(s);
+
+
+   for(int i=0;i<ans.size();i++)
+   {
+       cout<<ans[i]<<" ";
+   }
+
+
+
+    return 0;
+}

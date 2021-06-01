@@ -1,0 +1,58 @@
+//Pandigital Numbers
+//A pandigital number contains all digits (0-9) at least once. Write a function that takes an integer, returning true if the integer is pandigital, and false otherwise.
+//
+//Examples
+//isPandigital(98140723568910) ➞ true
+//
+//isPandigital(90864523148909) ➞ false
+//// 7 is missing.
+//
+//isPandigital(112233445566778899) ➞ false
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isPandigital(long long num) {
+
+
+     std::set<long long>s1;
+
+
+     while(num)
+     {
+         int k=num%10;
+         s1.insert(k);
+         num=num/10;
+     }
+
+
+
+	return s1.size()==10;
+}
+
+
+int main()
+{
+
+    long long num;
+    cin>>num;
+
+
+
+    if(isPandigital(num))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+
+
+
+    return 0;
+}

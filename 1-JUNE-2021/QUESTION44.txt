@@ -1,0 +1,137 @@
+//Encode Morse
+//
+//
+//Create a function that takes a string as an argument and returns the Morse code equivalent.
+//
+//Examples
+//encodeMorse("EDABBIT CHALLENGE") ➞ ". -.. .- -... -... .. -   -.-. .... .- .-.. .-.. . -. --. ."
+//
+//encodeMorse("HELP ME !") ➞ ".... . .-.. .--.   -- .   -.-.--"
+//Notes
+//Ouput should be International Morse Code, and use the standard conventions for symbols not defined inside the ITU recommendation (see Resources).
+//Input value can be lower or upper case.
+//Input string can have digits.
+//Input string can have some special characters (e.g. comma, colon, apostrophe, period, question mark, exclamation mark).
+//One space " " is expected after each character, except the last one.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string morseEncode(char x)
+{
+
+    switch (x) {
+    case 'a':
+        return ".-";
+    case 'b':
+        return "-...";
+    case 'c':
+        return "-.-.";
+    case 'd':
+        return "-..";
+    case 'e':
+        return ".";
+    case 'f':
+        return "..-.";
+    case 'g':
+        return "--.";
+    case 'h':
+        return "....";
+    case 'i':
+        return "..";
+    case 'j':
+        return ".---";
+    case 'k':
+        return "-.-";
+    case 'l':
+        return ".-..";
+    case 'm':
+        return "--";
+    case 'n':
+        return "-.";
+    case 'o':
+        return "---";
+    case 'p':
+        return ".--.";
+    case 'q':
+        return "--.-";
+    case 'r':
+        return ".-.";
+    case 's':
+        return "...";
+    case 't':
+        return "-";
+    case 'u':
+        return "..-";
+    case 'v':
+        return "...-";
+    case 'w':
+        return ".--";
+    case 'x':
+        return "-..-";
+    case 'y':
+        return "-.--";
+    case 'z':
+        return "--..";
+    case '1':
+        return ".----";
+    case '2':
+        return "..---";
+    case '3':
+        return "...--";
+    case '4':
+        return "....-";
+    case '5':
+        return ".....";
+    case '6':
+        return "-....";
+    case '7':
+        return "--...";
+    case '8':
+        return "---..";
+    case '9':
+        return "----.";
+    case '0':
+        return "-----";
+    default:
+        return "";
+    }
+}
+
+
+std::string encodeMorse(std::string s) {
+
+    string ans="";
+
+    for(int i=0;i<s.size();i++)
+    {
+        s[i]=std::tolower(s[i]);
+        if(s[i]!=' ')
+        {
+           ans+=morseEncode(s[i]);
+        }
+        else if(s[i]==' ')
+        {
+            ans+=" ";
+        }
+
+    }
+
+    return ans;
+
+}
+
+int main()
+{
+    string s;
+    getline(cin,s);
+
+
+    cout<<encodeMorse(s);
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,77 @@
+//ABA Integers: the Undulating Numbers]
+
+//In this challenge, you have to establish if a given number is undulating. A number n is undulating when the following conditions are all true:
+//
+//n has at least three digits.
+//n has exactly two different digits.
+//The two digits of n are alternating without repeating groups.
+//If we think at the first digit of an undulating number as an "A", and to its second digit as a "B",
+// we can notice a sequence of the form "ABA", that can repeat infinite times and ends either with an "A" or with a "B", but without clusters of "AA" or "BB" into it.
+//
+//Given a positive integer n, implement a function that returns true if n is an Undulating number, or false if it's not.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+bool isUndulating(int n)
+{
+    vector<int>Ans;
+    set<int>duplicate;
+
+    int k=n;
+
+    while(k)
+    {
+        int value=k%10;
+        duplicate.insert(value);
+        Ans.push_back(value);
+        k=k/10;
+
+    }
+
+    reverse(Ans.begin(),Ans.end());
+
+    if(Ans.size()<3)
+    {
+        return false;
+    }
+
+    if(duplicate.size()!=2)
+    {
+        return false;
+    }
+
+
+    for(int i=0;i<Ans.size()-1;i++)
+    {
+        if(Ans[i]==Ans[i+1])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main()
+{
+
+
+    int n;
+    cin>>n;
+
+
+    if(isUndulating(n))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+    return 0;
+}

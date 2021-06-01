@@ -1,0 +1,100 @@
+//Double Palindromes
+//
+//Strings can be segregated into both their letter and digit components.
+//
+//A double palindrome is when a string's letter component and digit component are both palindromes.
+//A single-palindrome is when either (but not both) the letter component or the digit component are palindromes
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<int> palindromeSet(std::vector<std::string> arr)
+{
+
+      vector<int>Ans;
+
+
+
+      for(int i=0;i<arr.size();i++)
+      {
+          string value=arr[i];
+          string character="";
+          string number="";
+
+          for(int j=0;j<value.size();j++)
+          {
+                if(value[j] >='0' && value[j]<='9')
+              {
+                  number+=value[j];
+              }
+              else if(value[j]>='a' && value[j]<='z')
+              {
+
+                  character+=value[j];
+              }
+
+          }
+
+          string reversecharacter=character;
+          reverse(reversecharacter.begin(),reversecharacter.end());
+
+          string reversenumber=number;
+          reverse(reversenumber.begin(),reversenumber.end());
+
+
+          if(character==reversecharacter && number==reversenumber)
+          {
+
+              Ans.push_back(2);
+          }
+          else if(character==reversecharacter || number==reversenumber)
+          {
+
+              Ans.push_back(1);
+
+          }
+          else{
+
+              Ans.push_back(0);
+          }
+
+
+      }
+
+
+
+
+
+     return Ans;
+
+}
+
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    vector<string>arr;
+
+
+    for(int i=0;i<n;i++)
+    {
+        string a;
+        cin>>a;
+        arr.push_back(a);
+    }
+
+    vector<int>Ans=palindromeSet(arr);
+
+    for(int i=0;i<Ans.size();i++)
+    {
+        cout<<Ans[i]<<" ";
+    }
+
+
+
+
+    return 0;
+}
