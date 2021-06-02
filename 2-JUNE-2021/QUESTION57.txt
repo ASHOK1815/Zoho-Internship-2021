@@ -1,0 +1,153 @@
+//
+//Recomposing Strings
+
+//
+//In this challenge, the goal is recomposing scrambled strings made of two or more words.
+//
+//Every string has to be reversed not in its totality, but by vowels or consonants clusters in the order they are found; 
+//after splitting the string in groups, and reversing every group with more than a letter, you'll obtain the correct sequence:
+//
+//String = "KiKdaola"
+//
+//Separation vowels/consonants = K  i  Kd  ao  l  a
+//
+//Reversing the groups = K  i  dK  oa  l  a
+//
+//New string = KidKoala
+//
+//Now, you have to insert a space between the words. A word starts with a capital letter:
+//
+//String = "KidKoala"
+//
+//Result = "Kid Koala"
+//
+//Given a string, implement a function that returns, in turn, a new correct string, following the above instructions.
+//Examples
+//
+//recompose("KiKdaola") ➞ "Kid Koala"
+//
+//recompose("BaosdrOCfanada") ➞ "Boards Of Canada"
+//// B  ao  sdr  O  Cf  a  n  a  d  a
+//// B  oa  rds  O  fC  a  n  a  d  a
+//
+//recompose("hCemicarBlohtesr") ➞ "Chemical Brothers"
+//// hC  e  m  i  c  a  rBl  o  ht  e  sr
+//// Ch  e  m  i  c  a  lBr  o  th  e  rs
+
+
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+std::string recompose(std::string s)
+{
+
+    std::vector<std::string>v;
+
+    std::map<char,int>m;
+    m['a']=1;
+    m['e']=1;
+    m['i']=1;
+    m['o']=1;
+    m['u']=1;
+    m['A']=1;
+    m['E']=1;
+    m['I']=1;
+    m['O']=1;
+    m['U']=1;
+
+    for(int i=0;i<s.size();i++)
+    {
+        std::string ans="";
+        if(m[s[i]]==0)
+        {
+            while(m[s[i]]==0 && i<s.size())
+            {
+                ans+=s[i];
+
+                i++;
+            }
+            i--;
+            reverse(ans.begin(),ans.end());
+            v.push_back(ans);
+             ans="";
+
+        }
+        else
+        {
+
+            while(m[s[i]]!=0 && i<s.size())
+            {
+
+                ans+=s[i];
+                i++;
+            }
+            i--;
+            reverse(ans.begin(),ans.end());
+            v.push_back(ans);
+             ans="";
+        }
+
+
+
+
+    }
+
+    std::string result="";
+    for(int i=0;i<v.size();i++)
+    {
+        result+=v[i];
+    }
+
+
+
+    bool flag=true;
+    std::string finalresult="";
+    for(int i=result.size()-1;i>0;i--)
+    {
+
+         finalresult+=result[i];
+
+        if(result[i]>='A' && result[i]<='Z')
+        {
+            finalresult+=" ";
+        }
+
+
+    }
+	  finalresult+=result[0];
+
+    reverse(finalresult.begin(),finalresult.end());
+
+
+
+
+
+
+
+
+
+	return finalresult;
+}
+
+
+
+int main()
+{
+
+
+
+    string s;
+    cin>>s;
+
+    cout<<recompose(s);
+
+
+
+    return 0;
+}
+

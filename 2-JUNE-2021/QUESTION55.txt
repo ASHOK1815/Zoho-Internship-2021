@@ -1,0 +1,104 @@
+//Parseltongue
+//Hermione has come up with a precise formula for determining whether or not a phrase was ssspoken by a parssseltongue (a reference from the Harry Potter universe; the language of ssserpents and those who can converse with them).
+//
+//Each word in a sssentence must contain either:
+//
+//Two or more consecutive instances of the letter "s" (i.e. must be together ss..), or...
+//Zero instances of the letter "s" by itself
+//
+//
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isParselTongue(std::string s) {
+
+	vector<string>v;
+
+    if(s[s.size()-1]!='.')
+    {
+        s+='.';
+    }
+
+	int i=0;
+
+	string result="";
+	while(s[i]!='.')
+    {
+
+        if(s[i]==' ')
+        {
+            v.push_back(result);
+            result="";
+            i++;
+        }
+
+
+        result+=std::tolower(s[i]);
+         if(s[i+1]=='.')
+        {
+            v.push_back(result);
+        }
+
+        i++;
+
+
+    }
+
+
+    for(int i=0;i<v.size();i++)
+    {
+        string temp=v[i];
+
+        bool flag=true;
+        for(int j=0;j<temp.size();j++)
+        {
+            int counter=0;
+            if(temp[j]=='s' && j+1<temp.size())
+            {
+                while(temp[j]=='s')
+                {
+                    counter++;
+                    j++;
+                }
+
+                if(counter==1)
+                {
+                    flag=false;
+                }
+
+            }
+
+        }
+
+
+        if(flag==false)
+        {
+            return false;
+        }
+
+
+    }
+
+
+   return true;
+
+}
+
+int main()
+{
+
+    string s;
+    getline(cin,s);
+
+    if(isParselTongue(s))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+}

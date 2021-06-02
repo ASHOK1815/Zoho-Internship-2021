@@ -1,0 +1,112 @@
+//Is It a Valid RGB(A) Color?
+//Given an RGB(A) CSS color, determine whether its format is valid or not.
+//Create a function that takes a string (e.g. "rgb(0, 0, 0)") and return true if it's format is correct, otherwise return false.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool validColor(std::string s)
+{
+
+	std::string left="";
+	int i=0;
+	while(s[i]!='(')
+    {
+        left+=s[i];
+        i++;
+    }
+
+    int k=left.size();
+
+//    cout<<k<<endl;
+//    cout<<i<<endl;
+     i++;
+     left="";
+     std::vector<std::string>Ans;
+     while(s[i]!=')')
+    {
+         left+=s[i];
+
+         i++;
+     }
+
+
+     left+=',';
+
+     std::string right="";
+     for(int i=0;i<left.size();i++)
+     {
+
+         if(left[i]==',')
+         {
+
+             if(right.size()!=0)
+             {
+
+                 if(right.find('%')!=std::string::npos)
+                 {
+                     int j=0;
+                     std::string temp="";
+                     while(right[j]!='%')
+                     {
+
+                         temp=right[j];
+                         j++;
+                     }
+
+                     right=temp;
+                 }
+
+                cout<<right<<endl;
+                 if(std::stof(right)>=0 && std::stof(right)<=1)
+                 {
+                     Ans.push_back(right);
+                 }
+
+                 right="";
+
+             }
+
+             i++;
+
+         }
+
+         right+=left[i];
+
+
+
+
+     }
+
+     int j=Ans.size();
+
+
+
+	return k==j;
+}
+int main()
+{
+
+
+    string s;
+    cin>>s;
+
+
+    if(validColor(s))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+
+
+
+    return 0;
+}

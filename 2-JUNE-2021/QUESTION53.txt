@@ -1,0 +1,82 @@
+//Shared Digits
+//
+//Create a function that returns true if each pair of adjacent numbers in an array shares at least one digit and false otherwise.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool sharedDigits(std::vector<int> arr) {
+
+
+
+	for(int i=0;i<=arr.size()-2;i++)
+    {
+        bool flag=false;
+        vector<int>a;
+        int k=arr[i];
+        int l=arr[i+1];
+        while(k)
+        {
+            int value=k%10;
+            a.push_back(value);
+            k=k/10;
+        }
+
+        while(l)
+        {
+            int value=l%10;
+            if(find(a.begin(),a.end(),value)!=a.end())
+               {
+                   flag=true;
+
+               }
+
+               l=l/10;
+        }
+
+        if(!flag)
+        {
+            return false;
+        }
+
+
+
+    }
+
+	return true;
+
+}
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    vector<int>arr;
+
+
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        arr.push_back(a);
+    }
+
+    if(sharedDigits(arr))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+    return 0;
+}

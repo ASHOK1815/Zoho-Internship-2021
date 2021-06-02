@@ -1,0 +1,82 @@
+//
+//Sort a String by Its Last Character
+
+//Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string sortByLast(std::string s) {
+
+	std::vector<string>v;
+
+    s+='.';
+	int i=0;
+	std::string result="";
+	while(s[i]!='.')
+    {
+
+
+        if(s[i]==' ')
+        {
+            v.push_back(result);
+            result="";
+            i++;
+        }
+
+
+        result+=s[i];
+         if(s[i+1]=='.')
+        {
+            v.push_back(result);
+        }
+
+        i++;
+    }
+
+
+
+
+    std::map<string,string>m;
+	for(int i=0;i<v.size();i++)
+    {
+        string temp=v[i];
+
+        reverse(temp.begin(),temp.end());
+        m[temp]=v[i];
+
+
+    }
+
+    std::string finalresult="";
+    for(auto x:m)
+    {
+       finalresult+=x.second;
+       finalresult+=" ";
+
+    }
+
+
+
+
+  return finalresult.substr(0,finalresult.size()-1);
+
+
+
+}
+
+
+int main()
+{
+    string s;
+    getline(cin,s);
+
+
+    cout<<sortByLast(s);
+
+
+
+    return 0;
+}
