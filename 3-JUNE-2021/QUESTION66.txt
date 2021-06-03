@@ -1,0 +1,84 @@
+//In N Days...
+//If today was Monday, in two days, it would be Wednesday.
+//
+//Create a function that takes in an array of days as input and the number of days to increment by. Return an array of days after n number of days has passed.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::vector<std::string> afterNDays(std::vector<std::string> days, int n)
+{
+	vector<string>Ans;
+	map<string,int>m;
+	map<int,string>m1;
+	m["Monday"]=1;
+	m["Tuesday"]=2;
+	m["Wednesday"]=3;
+	m["Thursday"]=4;
+	m["Friday"]=5;
+	m["Saturday"]=6;
+	m["Sunday"]=7;
+
+	m1[1]="Monday";
+	m1[2]="Tuesday";
+	m1[3]="Wednesday";
+	m1[4]="Thursday";
+	m1[5]="Friday";
+	m1[6]="Saturday";
+	m1[7]="Sunday";
+
+
+
+	for(int i=0;i<days.size();i++)
+    {
+        int k=m[days[i]]+n;
+
+        if(k>7)
+        {
+            k=k-7;
+            Ans.push_back(m1[k]);
+        }
+        else
+        {
+            Ans.push_back(m1[k]);
+        }
+
+    }
+
+
+	return Ans;
+
+
+}
+
+int main()
+{
+
+    int m;
+    cin>>m;
+
+    vector<string>days;
+    for(int i=0;i<m;i++)
+    {
+        string s;
+        cin>>s;
+        days.push_back(s);
+    }
+
+    int n;
+    cin>>n;
+
+    vector<string>ans=afterNDays(days,n);
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+
+
+
+    return 0;
+}

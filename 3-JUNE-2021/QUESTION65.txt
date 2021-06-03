@@ -1,0 +1,42 @@
+//Needle in a Hex String
+
+//Find the index of a string within a hex encoded string.
+//
+//You will be given a string which needs to be found in another string which has previously been translated into hex. You will need to
+//return the first index of the needle within the hex encoded string.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int firstIndex(std::string hex, std::string needle)
+{
+
+    std::string s;
+	std::stringstream ss;
+	ss<<std::hex<<int(needle[0]);
+	ss>>s;
+	return hex.find(s)/3;
+
+}
+
+int main()
+{
+
+    string hex,needle;
+
+    cout<<"Enter the hex string"<<endl;
+    getline(cin,hex);
+
+    cout<<"Enter the needle"<<endl;
+    getline(cin,needle);
+
+
+
+
+    cout<<firstIndex(hex,needle);
+
+
+
+    return 0;
+}

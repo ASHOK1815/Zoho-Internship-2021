@@ -1,0 +1,101 @@
+//Concatenate to Form Target Array
+
+//Create a function that returns true if smaller arrays can concatenate to form the target array and false otherwise.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool canConcatenate(std::vector<std::vector<int>> arr, std::vector<int> target)
+{
+
+	map<int,int>m;
+
+	for(int i=0;i<arr.size();i++)
+    {
+        for(int j=0;j<arr[i].size();j++)
+        {
+            m[arr[i][j]]++;
+        }
+    }
+
+
+    for(int i=0;i<target.size();i++)
+    {
+        m[target[i]]--;
+    }
+//
+//    for(auto x:m)
+//    {
+//      cout<<x.first<<" "<<x.second<<endl;
+//    }
+
+
+	for(auto x:m)
+    {
+        if(x.second!=0)
+        {
+            return false;
+        }
+    }
+
+	return true;
+}
+
+int main()
+{
+
+
+   int n,m;
+   cout<<"Enter the number  of row in the array"<<endl;
+   cin>>n;
+
+
+
+   vector<vector<int>>arr;
+
+
+   for(int i=0;i<n;i++)
+   {
+       vector<int>temp;
+    cout<<"Enter the number of column in the array"<<endl;
+    cin>>m;
+       for(int j=0;j<m;j++)
+       {
+           int a;
+           cin>>a;
+           temp.push_back(a);
+       }
+       arr.push_back(temp);
+   }
+
+
+   int k;
+   cout<<"Enter the number of element you want to enter in target array"<<endl;
+   cin>>k;
+
+   vector<int>target;
+
+
+   for(int i=0;i<k;i++)
+   {
+       int a;
+       cin>>a;
+       target.push_back(a);
+   }
+
+
+   if(canConcatenate(arr,target))
+   {
+       cout<<"True"<<endl;
+   }
+   else
+   {
+       cout<<"False"<<endl;
+   }
+
+
+
+
+    return 0;
+}

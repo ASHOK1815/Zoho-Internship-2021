@@ -1,0 +1,47 @@
+//
+//How Many Shuffles?
+//
+//An out-shuffle, also known as an out Faro shuffle or a perfect shuffle, is a controlled method for shuffling playing cards.
+//It is performed by splitting the deck into two equal halves and interleaving them together perfectly, with the condition that the top card of the deck remains in place.
+//
+//Using an array to represent a deck of cards, an out-shuffle looks like:
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int shuffleCount(int num)
+ {
+    if(num == 2)
+    {
+       return 1;
+    }
+    int counter = 0;
+    int fin = 1;
+    while(true){
+
+        fin = fin * 2;
+        counter++;
+        if(fin % (num - 1) == 1)
+        {
+            return counter;
+        }
+    }
+}
+
+
+int main()
+{
+
+    int num;
+    cin>>num;
+
+
+    cout<<shuffleCount(num);
+
+
+
+
+
+    return 0;
+}

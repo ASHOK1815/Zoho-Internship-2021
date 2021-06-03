@@ -1,0 +1,93 @@
+//Generating Words from Names
+//Write a function that returns true if a given name can generate an array of words.
+//
+//Examples
+//anagram("Justin Bieber", ["injures", "ebb", "it"]) ➞ true
+//
+//anagram("Natalie Portman", ["ornamental", "pita"]) ➞ true
+//
+//anagram("Chris Pratt", ["chirps", "rat"]) ➞ false
+//// Not all letters are used
+//
+//anagram("Jeff Goldblum", ["jog", "meld", "bluffs"]) ➞ false
+//// "s" does not exist in the original name
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool anagram(std::string name, std::vector<std::string> words)
+{
+
+    map<char,int>m;
+
+
+    for(int i=0;i<name.size();i++)
+    {
+       if(name[i]!=' ')
+       {
+            m[tolower(name[i])]++;
+       }
+
+    }
+
+
+    for(int i=0;i<words.size();i++)
+    {
+        string s=words[i];
+
+        for(int j=0;j<s.size();j++)
+        {
+            m[s[j]]--;
+        }
+    }
+
+
+
+    for(auto x:m)
+    {
+        if(x.second!=0)
+        {
+            return false;
+        }
+    }
+
+
+	return true;
+}
+
+int main()
+{
+
+
+    string s;
+    getline(cin,s);
+
+    int n;
+    cin>>n;
+
+    vector<string>words;
+
+    for(int i=0;i<n;i++)
+    {
+        string s1;
+        cin>>s1;
+        words.push_back(s1);
+    }
+
+    if(anagram(s,words))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+
+
+    return 0;
+}

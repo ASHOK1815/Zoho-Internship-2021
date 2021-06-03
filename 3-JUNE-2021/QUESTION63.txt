@@ -1,0 +1,67 @@
+//
+//Grocery Store Prices
+//You are given an array of strings consisting of grocery items, with prices in parentheses. Return an array of prices in float format.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<float> getPrices(std::vector<std::string> arr)
+{
+
+    vector<float>ans;
+
+
+    for(int i=0;i<arr.size();i++)
+    {
+        string s=arr[i];
+        string temp="";
+        int k=s.find('$');
+        k++;
+        while(s[k]!=')')
+        {
+            temp+=s[k];
+
+
+            k++;
+        }
+
+        ans.push_back(stof(temp));
+
+    }
+
+
+	return ans;
+}
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    vector<string>arr;
+    cin>>ws;
+    for(int i=0;i<n;i++)
+    {
+        string s;
+        getline(cin,s);
+
+        arr.push_back(s);
+    }
+
+
+    vector<float>ans=getPrices(arr);
+
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+
+
+
+
+    return 0;
+}

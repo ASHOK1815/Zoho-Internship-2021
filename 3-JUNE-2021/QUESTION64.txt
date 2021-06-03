@@ -1,0 +1,74 @@
+//
+//Replace With Next Largest Number
+//
+//Write a function that replaces each integer with the next largest in the array.
+//
+//Examples
+//replaceNextLargest([5, 7, 3, 2, 8]) ➞ [7, 8, 5, 3, -1]
+//
+//replaceNextLargest([2, 3, 4, 5]) ➞ [3, 4, 5, -1]
+//
+//replaceNextLargest([1, 0, -1, 8, -72]) ➞ [8, 1, 0, -1, -1]
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<int> replaceNextLargest(std::vector<int> arr)
+{
+
+	for(int i=0;i<arr.size();i++)
+    {
+
+        for(int j=i+1;j<arr.size();j++)
+        {
+
+            if(arr[j]>arr[i])
+            {
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+
+                break;
+            }
+        }
+
+
+    }
+
+    arr[arr.size()-1]=-1;
+
+
+	return arr;
+
+
+}
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    vector<int>arr;
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+
+        arr.push_back(a);
+    }
+
+    vector<int>ans=replaceNextLargest(arr);
+
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+
+
+    return 0;
+}
