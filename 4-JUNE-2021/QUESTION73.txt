@@ -1,0 +1,64 @@
+//Array of Prime Factors
+//
+//Write a function that returns the extended form of the prime factorization of a number. Return in the format [a, b, c, d, ...],
+//where each element of the array is an integer.
+//Examples
+//
+//primeFactorization(216) ➞ [2, 2, 2, 3, 3, 3]
+//
+//primeFactorization(64) ➞ [2, 2, 2, 2, 2, 2]
+//
+//primeFactorization(23) ➞ [23]
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<int> primeFactorization(int number)
+{
+    vector<int>ans;
+
+    while (number % 2 == 0)
+    {
+
+        ans.push_back(2);
+        number = number/2;
+    }
+
+
+    for (int i = 3; i <= sqrt(number); i = i + 2)
+    {
+
+        while (number % i == 0)
+        {
+            ans.push_back(i);
+            number = number/i;
+        }
+    }
+
+    if (number > 2)
+        ans.push_back(number);
+
+
+    return ans;
+}
+
+int main()
+{
+
+
+    int number;
+    cin>>number;
+
+
+    vector<int>Ans=primeFactorization(number);
+
+    for(int i=0;i<Ans.size();i++)
+    {
+        cout<<Ans[i]<<" ";
+    }
+
+
+
+    return 0;
+}

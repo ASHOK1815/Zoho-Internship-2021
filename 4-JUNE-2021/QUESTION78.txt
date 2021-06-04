@@ -1,0 +1,121 @@
+//Esthetic Numbers
+//A number is Esthetic if, in any base from base2 up to base10, the absolute difference between every pair of its adjacent digits is constantly equal to 1.
+//
+//num = 441 (base10)
+//// Adjacent pairs of digits:
+//// |4, 4|, |4, 1|
+//// The absolute difference is not constant
+//// 441 is not Esthetic in base10
+//
+//441 in base4 = 12321
+//// Adjacent pairs of digits:
+//// |1, 2|, |2, 3|, |3, 2|, |2, 1|
+//// The absolute difference is constant and is equal to 1
+//// 441 is Esthetic in base4
+//Given a positive integer num, implement a function that returns an array containing the bases (as integers from 2 up to 10) in which
+// num results to be Esthetic, or an empty array [] if no base makes num Esthetic.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::vector<int> esthetic(int num)
+{
+   vector<int>Ans;
+
+
+
+
+
+    int n=num;
+
+    int counter=2;
+
+    while(counter<=10)
+    {
+
+
+       vector<int>temp;
+        while(n)
+        {
+            int k=n%counter;
+
+            temp.push_back(k);
+
+
+            n=n/counter;
+
+
+        }
+
+
+        reverse(temp.begin(),temp.end());
+
+        bool flag=true;
+        for(int i=0;i<=temp.size()-2;i++)
+        {
+            if(abs(temp[i]-temp[i+1])==1)
+            {
+              continue;
+            }
+            else
+            {
+
+             flag=false;
+             break;
+            }
+
+
+        }
+
+        if(flag)
+        {
+            Ans.push_back(counter);
+        }
+
+
+        n=num;
+
+
+
+        counter++;
+    }
+
+
+
+   return Ans;
+}
+
+
+int main()
+{
+
+
+    int n;
+    cout<<"Enter the number of element you want to enter in vector"<<endl;
+    cin>>n;
+
+
+
+    vector<int>ans=esthetic(n);
+
+    if(ans.size()==0)
+    {
+        cout<<"vector is empty"<<endl;
+    }
+    else
+    {
+           for(int i=0;i<ans.size();i++)
+        {
+            cout<<ans[i]<<" ";
+        }
+    }
+
+
+
+
+
+
+    return 0;
+}

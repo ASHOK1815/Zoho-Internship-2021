@@ -1,0 +1,78 @@
+//The Alternating Numbers
+//In this challenge, you have to establish if an integer num is Alternating. To be Alternating, num must be positive and every digit in its sequence
+//must have a different parity than its next and its previous digit.
+//
+//Given an integer num, implement a function that returns true is num is an Alternating number, or false if it's not.
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isAlternating(int num)
+{
+    vector<int>ans;
+
+
+    while(num)
+    {
+        int k=num%10;
+        if(k%2==0)
+        {
+            ans.push_back(0);
+        }
+        else
+        {
+           ans.push_back(1);
+        }
+
+        num=num/10;
+    }
+
+    reverse(ans.begin(),ans.end());
+
+   int k=ans[0];
+
+   bool flag=true;
+   for(int i=1;i<ans.size();i++)
+   {
+
+
+       if(ans[i]!=k^1)
+       {
+
+           flag=false;
+
+           break;
+       }
+       k=k^1;
+
+
+   }
+
+
+   return flag;
+
+}
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+
+    if(isAlternating(n))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+    return 0;
+}
