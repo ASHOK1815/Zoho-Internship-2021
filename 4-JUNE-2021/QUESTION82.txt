@@ -1,0 +1,91 @@
+//Wild Tiles
+//Write a function that returns true if it is possible to build a string with a particular scrabble hand.
+//
+//Examples
+//canBuild("quavers", ["S", "U", "Q", "V", "A", "#", "#"]) ➞ true
+//
+//canBuild("move", ["M", "U", "T", "V", "E", "J", "#"]) ➞ true
+//
+//canBuild("move", ["M", "U", "T", "V", "E", "J", "S"]) ➞ false
+//
+//canBuild("sharp", ["S", "K", "H", "#", "#", "F", "F"]) ➞ false
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+bool canBuild(std::string word, std::vector<char> letters)
+{
+
+      map<char,int>m;
+
+      for(int i=0;i<letters.size();i++)
+      {
+          m[std::tolower(letters[i])]++;
+      }
+
+      bool flag=true;
+      for(int i=0;i<word.size();i++)
+      {
+          if(m[word[i]]!=0)
+          {
+              m[word[i]]--;
+          }
+          else if(m[word[i]]==0)
+          {
+              if(m['#']!=0)
+              {
+                  m['#']--;
+              }
+              else
+              {
+                  flag=false;
+                  break;
+              }
+          }
+
+      }
+
+
+     return flag;
+
+}
+
+int main()
+{
+
+
+   string s;
+   cin>>s;
+
+   int n;
+   cin>>n;
+
+   vector<char>letters;
+   for(int i=0;i<n;i++)
+   {
+       char a;
+       cin>>a;
+       letters.push_back(a);
+   }
+
+
+   if(canBuild(s,letters))
+   {
+       cout<<"True"<<endl;
+   }
+   else
+   {
+       cout<<"False"<<endl;
+   }
+
+
+
+
+
+
+
+    return 0;
+}

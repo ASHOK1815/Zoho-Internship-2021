@@ -1,0 +1,151 @@
+//Broken Bridge
+//A broken bridge can be represented by 1s and 0s, where contiguous 0s represent holes. You can walk across a bridge with a hole with a maximum width of 1, but any holes bigger than that you must fix first. For example, the bridge below is walkeable:
+//
+//[1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1]
+//This bridge is not:
+//
+//[1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+//You own several wooden planks, each with different widths. You can patch the holes on the bridge with these planks. More specifically, a plank size n can fill a n-sized hole. If you had a plank of size 2, the un-walkeable bridge above could be filled in:
+//
+//[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+//But even if you only had a plank of size 1, you could still transform the unwalkeable bridge into a walkeable one:
+//
+//[1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+//Write a function that takes in a broken bridge, an array of plank sizes, and returns true if the bridge can be patched up enough to walk over, and false otherwise.
+//
+//Examples
+//canPatch([1, 0, 0, 0, 0, 0, 0, 1], [5, 1, 2]) ➞ true
+//// You can use the 5 plank to transform the 6 hole to a 1 hole.
+//// Leftover planks [1, 2] are okay.
+//
+//canPatch([1, 0, 0, 0, 0, 0, 0, 1], [4, 1, 2, 3, 4]) ➞ false
+//// None of your planks are long enough (you can't combine them).
+//
+//canPatch([1, 0, 0, 1, 1, 0, 0, 0, 1], [1, 2]) ➞ true
+//
+//canPatch([1, 0, 0, 1, 1, 0, 0, 0, 1], [1, 1]) ➞ false
+//Notes
+//Individual planks may NOT be combined to form a longer plank.
+//Leftover planks are okay.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+bool canPatch(std::vector<int> bridge, std::vector<int> planks)
+{
+       map<int,int>m;
+
+       vector<int>ans;
+       for(int i=0;i<planks.size();i++)
+       {
+           m[planks[i]]++;
+       }
+
+       int i=0;
+
+       while(i!=bridge.size())
+       {
+           int counter=0;
+           if(bridge[i]==0)
+           {
+               while(bridge[i]==0)
+               {
+                  counter++;
+                  i++;
+               }
+              ans.push_back(counter);
+           }
+
+
+           if(i==bridge.size())
+           {
+
+               break;
+           }
+
+
+
+
+
+           i++;
+
+       }
+
+       bool flag=true;
+
+
+
+       for(int i=0;i<ans.size();i++)
+       {
+        cout<<m[ans[i]-1]<<" ";
+           if((m[ans[i]-1])!=0)
+           {
+               m[ans[i]-1]--;
+
+
+           }
+           else
+           {
+               flag=false;
+               break;
+
+           }
+       }
+
+
+
+
+       return flag;
+}
+
+int main()
+{
+   int n,m;
+   cout<<"Enter the size of the bridge vector"<<endl;
+   cin>>n;
+
+   vector<int>bridge;
+
+   for(int i=0;i<n;i++)
+   {
+       int a;
+       cin>>a;
+       bridge.push_back(a);
+   }
+
+
+
+   cout<<"Enter the size of the planks vector"<<endl;
+   cin>>m;
+
+   vector<int>planks;
+
+   for(int i=0;i<m;i++)
+   {
+       int a;
+       cin>>a;
+       planks.push_back(a);
+   }
+
+
+   if(canPatch(bridge,planks))
+   {
+       cout<<"True"<<endl;
+   }
+   else
+   {
+       cout<<"False"<<endl;
+   }
+
+
+   return 0;
+}
+
+
+
+
+
+

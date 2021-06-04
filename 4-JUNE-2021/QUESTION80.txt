@@ -1,0 +1,99 @@
+//Compass Directions
+//
+//You face 1 out of the 4 compass directions: N, S, E or W.
+//
+//    A left turn is a counter-clockwise turn. e.g. N (left-turn) ➞ W.
+//    A right turn is a clockwise turn. e.g. N (right-turn) ➞ E.
+//
+//Create a function that takes in a starting direction and a sequence of left and right turns, and outputs the final direction faced.
+//Examples
+//
+//finalDirection("N", ["L", "L", "L"]) ➞ "E"
+//
+//finalDirection("N", ["R", "R", "R", "L"]) ➞ "S"
+//
+//finalDirection("N", ["R", "R", "R", "R"]) ➞ "N"
+//
+//finalDirection("N", ["R", "L"]) ➞ "N"
+//
+//Notes
+//
+//You can only face 1 out of the 4 compass directions: N, S, E or W.
+
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+char finalDirection(char initial, std::vector<char> turns)
+{
+
+    char direction[4] = {'N','E','S','W'};
+    int counter=0;
+
+    for(int i=0;i<turns.size();i++)
+    {
+        if(turns[i]=='L')
+        {
+
+            counter--;
+        }
+        else
+        {
+            counter++;
+        }
+
+    }
+
+    int value;
+    for(int i=0;i<4;i++)
+    {
+        if(direction[i]==initial)
+        {
+            value=i;
+            break;
+        }
+    }
+	counter += value;
+	counter %= 4;
+	if(counter<0) counter += 4;
+
+
+
+	return direction[counter];
+
+
+
+}
+int main()
+{
+   char initial;
+
+   cin>>initial;
+
+
+   int n;
+   cin>>n;
+
+   vector<char>turns;
+
+   for(int i=0;i<n;i++)
+   {
+       char a;
+       cin>>a;
+       turns.push_back(a);
+   }
+
+
+
+   cout<<finalDirection(initial,turns);
+
+
+
+
+
+    return 0;
+}
