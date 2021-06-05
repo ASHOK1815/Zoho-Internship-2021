@@ -1,0 +1,116 @@
+//How Many Days Until 2021?
+//Given a date, return how many days date is away from 2021 (end date not included). date will be in mm/dd/yyyy format.
+//
+//Examples
+//daysUntil2021("12/28/2020") ➞ "3 days"
+//
+//daysUntil2021("1/1/2020") ➞ "366 days"
+//
+//daysUntil2021("2/28/2020") ➞ "308 days"
+//Notes
+//All given dates will be in the year 2020.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+
+
+std::string daysUntil2021(std::string s)
+{
+
+   string month;
+   string Date;
+   int counter=0;
+
+   int i=0;
+
+   s+=".";
+
+   string temp="";
+
+
+   map<int,int>m;
+
+   m[1]=31;
+   m[2]=29;
+   m[3]=31;
+   m[4]=30;
+   m[5]=31;
+   m[6]=30;
+   m[7]=31;
+   m[8]=31;
+   m[9]=30;
+   m[10]=31;
+   m[11]=30;
+   m[12]=31;
+
+
+
+   while(s[i]!='.')
+   {
+
+       if(s[i]=='/')
+       {
+            counter++;
+
+           if(counter==1)
+           {
+               month=temp;
+               temp="";
+               i++;
+           }
+           else if(counter==2)
+           {
+
+               Date=temp;
+               break;
+           }
+
+       }
+
+       temp+=s[i];
+       i++;
+
+
+   }
+
+   int Month=atoi(month.c_str());
+   int date=atoi(Date.c_str());
+
+   int day=m[Month]-date;
+
+   
+
+   for(int i=Month+1;i<=12;i++)
+   {
+
+           day+=m[i];
+
+
+
+   }
+
+   day++;
+
+
+
+    string finalans=to_string(day);
+
+	return finalans;
+}
+
+int main()
+{
+
+    string date;
+
+    cin>>date;
+
+    cout<<daysUntil2021(date);
+
+
+
+}

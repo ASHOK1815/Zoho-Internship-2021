@@ -1,0 +1,66 @@
+//Flatten the Curve
+//Given an array of integers, replace every number with the mean of all numbers.
+//
+//Examples
+//flattenCurve([1, 2, 3, 4, 5]) ➞ [3, 3, 3, 3, 3]
+//
+//flattenCurve([0, 0, 0, 2, 7, 3]) ➞ [2, 2, 2, 2, 2, 2]
+//
+//flattenCurve([4]) ➞ [4]
+//
+//flattenCurve([]) ➞ []
+//Notes
+//Round averages to 1 decimal point.
+//Return an empty array if given an empty array (see example #4).
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<float> flattenCurve(std::vector<int> arr)
+{
+
+
+	float result=0;
+	for(int i=0;i<arr.size();i++)
+    {
+        result+=arr[i];
+    }
+
+
+    result=round(result/arr.size());
+
+
+    vector<float>ans(arr.size(),result);
+
+    return ans;
+}
+
+int main()
+{
+
+   int n;
+   cout<<"Enter the size of the arr vector"<<endl;
+   cin>>n;
+
+   vector<int>arr;
+
+   for(int i=0;i<n;i++)
+   {
+       int a;
+       cin>>a;
+       arr.push_back(a);
+   }
+
+   vector<float>result=flattenCurve(arr);
+
+   for(int i=0;i<result.size();i++)
+   {
+       cout<<result[i]<<" ";
+   }
+
+
+
+    return 0;
+}
+

@@ -1,0 +1,85 @@
+//A Possible Shape?
+//Given the number n and an array of interior angles angles, return whether or not it's possible to make a polygon with n sides with the angles given.
+//Remember that angles must be equals or under 180° and over 0°.
+//
+//isShapePossible(3, [80, 70, 30]) ➞ true
+//Triangle with the angles 80, 70 and 30
+//
+//A shape with 3 sides and the angles 80°, 70° and 30° is a possible shape.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isShapePossible(int n, std::vector<int> angles)
+{
+
+    int counter = 0;
+
+    if(n<3)
+    {
+        return false;
+
+    }
+
+
+
+
+
+    for (int i = 0; i < angles.size(); i++) {
+        if(angles[i]<=0 || angles[i]>180)
+        {
+
+            return false;
+        }
+        counter += angles[i];
+    }
+
+
+    if (counter == 180 * ((angles.size())- 2))
+    {
+        return true;
+    }
+    else
+
+    {
+       return false;
+    }
+
+
+
+
+}
+
+int main()
+{
+
+   int n;
+   cout<<"Enter the number "<<endl;
+   cin>>n;
+
+   int m;
+   cout<<"Enter the size of angles vector"<<endl;
+   cin>>m;
+
+   vector<int>angles;
+   for(int i=0;i<m;i++)
+   {
+       int a;
+       cin>>a;
+       angles.push_back(a);
+   }
+
+   if(isShapePossible(n,angles))
+   {
+       cout<<"True"<<endl;
+   }
+   else
+   {
+       cout<<"False"<<endl;
+   }
+
+
+    return 0;
+}
+

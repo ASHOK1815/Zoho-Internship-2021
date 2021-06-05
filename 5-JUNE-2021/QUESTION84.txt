@@ -1,0 +1,88 @@
+//Nearest Vowel
+//Given a letter, created a function which returns the nearest vowel to the letter. If two vowels are equidistant to the given letter, return the earlier vowel.
+//
+//Examples
+//nearestVowel("b") ➞ "a"
+//
+//nearestVowel("s") ➞ "u"
+//
+//nearestVowel("c") ➞ "a"
+//
+//nearestVowel("i") ➞ "i"
+//Notes
+//All letters will be given in lowercase.
+//There will be no alphabet wrapping involved, meaning the closest vowel to "z" should return "u", not "a".
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+char nearestVowel(char s)
+{
+    map<char,int>m;
+    m['a']=1;
+    m['e']=1;
+    m['i']=1;
+    m['o']=1;
+    m['u']=1;
+
+
+    int check=s;
+
+
+    char leftans;
+    int counter=0;
+
+    for(int i=check;i>=97;i--)
+    {
+        if(m[char(i)])
+        {
+            leftans=char(i);
+
+            break;
+        }
+        counter++;
+    }
+
+    char rightans;
+    int counter1=0;
+    for(int j=check;j<=122;j++)
+    {
+        if(m[char(j)])
+        {
+            rightans=char(j);
+            break;
+        }
+
+        counter1++;
+
+    }
+
+
+    if(counter<counter1)
+    {
+        return leftans;
+    }
+    else if(counter>counter1)
+    {
+        return rightans;
+    }
+    else
+    {
+        return leftans;
+    }
+
+
+}
+
+int main()
+{
+
+  char value;
+  cin>>value;
+
+  cout<<nearestVowel(value);
+
+  return 0;
+
+}

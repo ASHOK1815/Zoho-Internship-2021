@@ -1,0 +1,94 @@
+//Birthday Cake
+//Create a function which constructs a rectangular birthday cake, based on someone's name and age! Build it out of strings in an array and makes sure to surround the birthday message with the character that fits the rule:
+//
+//If the age is an even number, surround the message with "#".
+//If the age is an odd number, surround the message with "*".
+//Other important rules:
+//
+//The message should be in the format: {age} Happy Birthday {name}! {age}
+//Leave a space between the edge of the cake and the age numbers.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<std::string> getBirthdayCake(std::string name, int age)
+{
+
+    int n=name.size();
+
+    string new_age=to_string(age);
+    int m=new_age.size();
+    vector<string> res;
+    int size1=22+(2*m)+n;
+
+    if(age%2==0)
+    {
+            for(int i=0;i<3;i++)
+        { string s="";
+            if(i==0 || i==2){
+            for(int j=0;j<size1;j++)
+            {
+                s+="#";
+            }
+            }
+            else{
+                s+="# "+new_age+" Happy Birthday "+name+"! "+new_age+" #";
+            }
+            res.push_back(s);
+        }
+        return res;
+
+
+    }
+    else
+    {
+        for(int i=0;i<3;i++)
+        { string s="";
+            if(i==0 || i==2){
+            for(int j=0;j<size1;j++)
+            {
+                s+="*";
+            }
+            }
+            else{
+                s+="* "+new_age+" Happy Birthday "+name+"! "+new_age+" *";
+            }
+            res.push_back(s);
+        }
+        return res;
+
+    }
+
+
+
+}
+
+
+
+
+int main()
+{
+
+   string s;
+   cout<<"Enter the string"<<endl;
+   cin>>s;
+
+   int n;
+   cout<<"Enter the number"<<endl;
+   cin>>n;
+
+   vector<string>ans=getBirthdayCake(s,n);
+
+   for(int i=0;i<ans.size();i++)
+   {
+       cout<<ans[i];
+       cout<<endl;
+
+   }
+
+
+
+    return 0;
+}
+

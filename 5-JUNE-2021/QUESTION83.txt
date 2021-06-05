@@ -1,0 +1,94 @@
+//Remove The Word!
+//Create a function that takes an array and string. The function should remove the letters in the string from the array, and return the array.
+//
+//Examples
+//removeLetters(["s", "t", "r", "i", "n", "g", "w"], "string") ➞ ["w"]
+//
+//removeLetters(["b", "b", "l", "l", "g", "n", "o", "a", "w"], "balloon") ➞ ["b", "g", "w"]
+//
+//removeLetters(["d", "b", "t", "e", "a", "i"], "edabit") ➞ []
+//Notes
+//If number of times a letter appears in the array is greater than the number of times the letter appears in the string,
+// the extra letters should be left behind (see example #2).
+//If all the letters in the array are used in the string, the function should return an empty array (see example #3).
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<char> removeLetters(std::vector<char> letters, std::string word)
+{
+
+     map<char,int>m;
+     vector<char>ans;
+
+     for(int i=0;i<letters.size();i++)
+     {
+         m[letters[i]]++;
+     }
+
+
+     for(int i=0;i<word.size();i++)
+     {
+         if(m[word[i]]!=0)
+         {
+             m[word[i]]--;
+         }
+     }
+
+     for(auto x:m)
+     {
+         if(x.second!=0)
+         {
+            ans.push_back(x.first);
+         }
+
+     }
+
+
+
+    return ans;
+}
+
+int main()
+{
+
+    int n;
+    cout<<"Enter the size of the letter vector"<<endl;
+    cin>>n;
+
+    vector<char>letters;
+
+    for(int i=0;i<n;i++)
+    {
+        char a;
+        cin>>a;
+        letters.push_back(a);
+    }
+
+ string word;
+    cout<<"Enter the string"<<endl;
+    cin>>word;
+
+
+    vector<char>result=removeLetters(letters,word);
+
+    if(result.size()==0)
+    {
+        cout<<"Result vector is empty"<<endl;
+    }
+    for(int i=0;i<result.size();i++)
+    {
+        cout<<result[i]<<" ";
+    }
+
+
+
+
+
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,51 @@
+//Capital Split
+//Create a function which adds spaces before every capital in a word. Uncapitalize the whole string afterwards.
+//
+//Examples
+//capSpace("helloWorld") ➞ "hello world"
+//
+//capSpace("iLoveMyTeapot") ➞ "i love my teapot"
+//
+//capSpace("stayIndoors") ➞ "stay indoors"
+//Notes
+//The first letter will stay uncapitalized.
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string capSpace(std::string txt)
+{
+	string ans="";
+
+	for(int i=0;i<txt.size();i++)
+    {
+        if(txt[i]>='A' && txt[i]<='Z')
+        {
+            ans+=" ";
+            ans+=txt[i];
+        }
+        else
+        {
+
+            ans+=txt[i];
+        }
+    }
+
+
+    return ans;
+}
+
+int main()
+{
+
+    string txt;
+    cin>>txt;
+
+
+    cout<<capSpace(txt);
+
+    return 0;
+}
+
