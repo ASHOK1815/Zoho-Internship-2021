@@ -1,0 +1,87 @@
+//The Most Brilliant Exciting Fantastic Number
+//Given a number n, return a sentence which describes the number in the following ways.
+//
+//Always start the string with "The most ".
+//If n is evenly divisible by 1, add "brilliant " to the sentence.
+//If n is evenly divisble by 2, add "exciting " to the sentence.
+//... 3, add "fantastic " to the sentence.
+//... 4, add "virtuous " to the sentence.
+//... 5, add "heart-warming " ...
+//... 6, add "tear-jerking " ...
+//... 7, add "beautiful " ...
+//... 8, add "exhilarating " ...
+//... 9, add "emotional " ...
+//If n is evenly divisible by 10, add "inspiring " to the sentence.
+//Always end the string with "number is n!".
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string describeNum(int n)
+{
+    string ans="";
+
+    ans+="The most brilliant ";
+
+    if(n%2==0)
+    {
+        ans+="exciting ";
+    }
+    if(n%3==0)
+    {
+        ans+="fantastic ";
+    }
+    if(n%4==0)
+    {
+        ans+="virtuous ";
+    }
+     if(n%5==0)
+    {
+        ans+="heart-warming ";
+    }
+    if(n%6==0)
+    {
+        ans+="tear-jerking ";
+    }
+     if(n%7==0)
+    {
+        ans+="beautiful ";
+    }
+   if(n%8==0)
+    {
+        ans+="exhilarating ";
+    }
+       if(n%9==0)
+    {
+        ans+="emotional ";
+    }
+    if(n%10==0)
+    {
+        ans+="inspiring ";
+    }
+
+
+    ans+="number is ";
+    ans+=to_string(n)+"!";
+
+
+    return ans;
+
+
+}
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    cout<<describeNum(n);
+
+
+    return 0;
+}
+

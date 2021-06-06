@@ -1,0 +1,82 @@
+//Making a Sandwich
+//Given an array of ingredients ingredients and a char flavour flavour as input, create a function that returns the array but with the elements
+//bread around the selected ingredient.
+//
+//Examples
+//makeSandwich(["tuna", "ham", "tomato"], "ham") ➞ ["tuna", "bread", "ham", "bread", "tomato"]
+//
+//makeSandwich(["cheese", "lettuce"], "cheese") ➞ ["bread", "cheese", "bread", "lettuce"]
+//
+//makeSandwich(["ham", "ham"], "ham") ➞ ["bread", "ham", "bread", "bread", "ham", "bread"]
+//Notes
+//You will always get valid inputs.
+//Make two separate sandwiches if two of the same elements are next to each other (see example #3).
+
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+std::vector<std::string> makeSandwich(std::vector<std::string> ingredients, string flavour)
+{
+
+    int k;
+
+    for(int i=0;i<ingredients.size();i++)
+    {
+        if(ingredients[i]==flavour)
+        {
+            k=i;
+            break;
+        }
+    }
+
+    ingredients.insert(ingredients.begin()+k,"bread");
+    ingredients.insert(ingredients.begin()+k+2,"bread");
+
+    return ingredients;
+
+}
+
+int main()
+{
+    cout<<"Enter the size of the ingredients vector"<<endl;
+
+    int n;
+    cin>>n;
+
+
+    vector<string>ingredients;
+
+    for(int i=0;i<n;i++)
+    {
+        string s;
+        cin>>s;
+        ingredients.push_back(s);
+    }
+
+
+    string flavour;
+    cout<<"Enter the flavour"<<endl;
+    cin>>flavour;
+
+
+    vector<string>ans=makeSandwich(ingredients,flavour);
+
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+
+
+
+
+
+
+    return 0;
+}
