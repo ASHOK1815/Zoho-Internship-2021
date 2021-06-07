@@ -1,0 +1,96 @@
+//Balancing Scales
+//Given an array with an odd number of elements, return whether the scale will tip "left" or "right" based on the sum of the numbers.
+//The scale will tip on the direction of the largest total. If both sides are equal, return "balanced".
+//
+//Examples
+//scaleTip([0, 0, -1, 1, 1]) ➞ "right"
+//// 0 < 2 so it will tip right
+//
+//scaleTip([1, 2, 3, -1, 4, 0, 0]) ➞ "left"
+//// 6 > 4 so it will tip left
+//
+//scaleTip([5, 5, 5, 0, -1, 10, 2, 2, 1]) ➞ "balanced"
+//// 15 = 15 so it will stay balanced
+//Notes
+//The middle element will always be -1 so you can just ignore it.
+//Assume the numbers all represent the same unit.
+//Both sides will have the same number of elements.
+//There are no such things as negative weights in both real life and the tests!
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string scaleTip(std::vector<int> arr)
+{
+
+    int index=-1;
+
+    for(int i=0;i<arr.size();i++)
+    {
+        if(arr[i]==-1)
+        {
+            index=i;
+            break;
+        }
+    }
+
+
+    int left=0;
+    int right=0;
+
+    for(int i=0;i<index;i++)
+    {
+        left+=arr[i];
+    }
+
+    for(int j=index+1;j<arr.size();j++)
+    {
+        right+=arr[j];
+    }
+
+    if(left>right)
+    {
+        return "left";
+    }
+    else if(left<right)
+    {
+        return "right";
+    }
+    else
+    {
+        return "balanced";
+    }
+
+
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter the size of the array"<<endl;
+    cin>>n;
+
+
+
+    vector<int>Ans;
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        Ans.push_back(a);
+    }
+
+
+    cout<<scaleTip(Ans);
+
+
+
+
+
+
+
+
+    return 0;
+}

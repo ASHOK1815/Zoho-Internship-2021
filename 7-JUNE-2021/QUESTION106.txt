@@ -1,0 +1,61 @@
+//Geometry 3: Perimeter of a Triangle
+//Write a function that takes the coordinates of three points in the form of a 2d array and returns the perimeter of the triangle. The given points are the vertices of a triangle on a two-dimensional plane.
+//
+//Examples
+//perimeter( [ [15, 7], [5, 22], [11, 1] ] ) ➞ 47.08
+//
+//perimeter( [ [0, 0], [0, 1], [1, 0] ] ) ➞ 3.42
+//
+//perimeter( [ [-10, -10], [10, 10 ], [-10, 10] ] ) ➞ 68.28
+//Notes
+//The given points always create a triangle.
+//The numbers in the argument array can be positive or negative.
+//Output should have 2 decimal places
+//This challenge is easier than it looks.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+double perimeter(std::vector<std::vector<int>> arr)
+{
+	double x = sqrt(pow((arr[0][0]-arr[1][0]),2) + pow((arr[0][1]-arr[1][1]),2));
+	double y = sqrt(pow((arr[1][0]-arr[2][0]),2) + pow((arr[1][1]-arr[2][1]),2));
+	double z = sqrt(pow((arr[2][0]-arr[0][0]),2) + pow((arr[2][1]-arr[0][1]),2));
+
+	return round((x+y+z)*100)/100;
+}
+
+int main()
+{
+    cout<<"Enter the number of row and column"<<endl;
+    int n;
+    cin>>n;
+
+    int m;
+    cin>>m;
+
+
+    vector<vector<int>>arr;
+
+
+    for(int i=0;i<n;i++)
+    {
+        vector<int>temp;
+
+        for(int j=0;j<m;j++)
+        {
+           int a;
+            cin>>a;
+            temp.push_back(a);
+        }
+        arr.push_back(temp);
+    }
+
+
+
+    cout<<perimeter(arr);
+
+
+
+}

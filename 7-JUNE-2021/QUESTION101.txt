@@ -1,0 +1,141 @@
+//pigLatin 3.0
+//Write a function that converts a sentence into pig latin.
+//
+//Rules for converting to pig latin:
+//
+//For words that begin with a vowel (a, e, i, o, u), add "way".
+//Otherwise, move all letters before the first vowel to the end and add "ay".
+//For simplicity, no punctuation will be present in the inputs.
+//Examples
+//pigLatinSentence("this is pig latin") ➞ "isthay isway igpay atinlay"
+//
+//pigLatinSentence("wall street journal") ➞ "allway eetstray ournaljay"
+//Notes
+//N/A
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+std::string pigLatinSentence(std::string s)
+{
+    map<char,int>m;
+
+    m['a']=1;
+    m['e']=1;
+    m['i']=1;
+    m['o']=1;
+    m['u']=1;
+
+
+    int i=0;
+
+    string vowel="";
+    string cons="";
+
+    map<string,string>ans;
+    bool flag=true;
+
+    string finalresult="";
+
+    while(s[i]!='\0')
+    {
+
+        if(s[i]==' ')
+        {
+
+
+
+           if(cons.size()==0)
+           {
+               finalresult+=vowel;
+               finalresult+="way";
+               finalresult+=" ";
+
+
+           }
+           else
+           {
+               finalresult+=vowel;
+               finalresult+=cons;
+               finalresult+="ay";
+               finalresult+=" ";
+
+           }
+
+
+
+            vowel="";
+            cons="";
+
+            i++;
+            flag=true;
+
+        }
+
+
+
+        if(m[s[i]]!=0 || !flag)
+        {
+            vowel+=s[i];
+            flag=false;
+
+        }
+        else
+        {
+            cons+=s[i];
+        }
+
+        if(i==s.size()-1)
+        {
+
+
+
+            if(cons.size()==0)
+           {
+               finalresult+=vowel;
+               finalresult+="way";
+               finalresult+=" ";
+
+
+           }
+           else
+           {
+               finalresult+=vowel;
+               finalresult+=cons;
+               finalresult+="ay";
+               finalresult+=" ";
+
+           }
+            vowel="";
+            cons="";
+
+        }
+
+
+        i++;
+
+    }
+
+
+
+	return finalresult;
+}
+
+
+int main()
+{
+
+    string s;
+    getline(cin,s);
+
+
+    cout<<pigLatinSentence(s);
+
+
+
+
+
+}

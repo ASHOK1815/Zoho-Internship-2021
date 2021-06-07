@@ -1,0 +1,100 @@
+//Is It a Probability Matrix?
+//In probability theory, a probability matrix is a matrix such that:
+//
+//The matrix is a square matrix (same number of rows as columns).
+//All entries are probabilities, i.e. numbers between 0 and 1.
+//All rows add up to 1.
+//The following is an example of a probability matrix:
+//
+//[
+//  [0.5, 0.5, 0.0],
+//  [0.2, 0.5, 0.3],
+//  [0.1, 0.2, 0.7]
+//]
+//Note that though all rows add up to 1, there is no restriction on the columns, which may or may not add up to 1.
+//
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isProbMatrix(std::vector<std::vector<double>> arr)
+{
+
+    if(arr.size()!=arr[0].size())
+    {
+        return false;
+    }
+
+
+    for(int i=0;i<arr.size();i++)
+    {
+        double sum=0;
+        for(int j=0;j<arr[i].size();j++)
+        {
+
+            if(arr[i][j]<0 || arr[i][j]>1)
+            {
+
+                return false;
+            }
+
+            sum+=arr[i][j];
+
+
+        }
+
+        if(1!=(int)sum)
+        {
+            return false;
+        }
+    }
+
+
+	return true;
+}
+
+
+int main()
+{
+    cout<<"Enter the number of row and column"<<endl;
+    int n;
+    cin>>n;
+
+    int m;
+    cin>>m;
+
+
+    vector<vector<double>>arr;
+
+
+    for(int i=0;i<n;i++)
+    {
+        vector<double>temp;
+
+        for(int j=0;j<m;j++)
+        {
+            double a;
+            cin>>a;
+            temp.push_back(a);
+        }
+        arr.push_back(temp);
+    }
+
+
+
+    if(isProbMatrix(arr))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+
+    return 0;
+}

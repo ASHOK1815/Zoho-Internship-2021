@@ -1,0 +1,66 @@
+//House of Cards
+//
+//The image below shows a sequence of larger and larger houses of cards, with the total number of cards included for each:
+//
+//House of Cards
+//
+//Given the tower height n, return the number of cards needed to construct a full house of cards.
+//Examples
+//
+//cardsNeeded(3) ➞ 15
+//
+//cardsNeeded(4) ➞ 26
+//
+//cardsNeeded(0) ➞ 0
+//
+//Notes
+//
+//The height should always be equal or greater than 0. Return -1 if the value given doesn't abide by this rule.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int cardsNeeded(int n)
+{
+
+   if(n==0)
+   {
+
+       return 0;
+   }
+
+   if(n<0)
+   {
+       return -1;
+   }
+
+   int counter=2;
+   int increment=5;
+
+   for(int i=1;i<n;i++)
+   {
+       counter=counter+increment;
+       increment=increment+3;
+
+   }
+
+
+    return counter;
+
+}
+
+
+int main()
+{
+
+   int n;
+   cin>>n;
+   cout<<cardsNeeded(n);
+
+
+
+
+    return 0;
+}
