@@ -1,0 +1,100 @@
+//Look and Say Numbers
+//Given an integer, return a new string according to the rules below:
+//
+//Split the number into groups of two digit numbers. If the number has an odd number of digits, return "invalid".
+//For each group of two digit numbers, concatenate the last digit to a new string the same number of times as the value of the first digit.
+//Return the result as a string.
+//lookAndSay(3132) ➞ "111222"
+//
+//// By reading the number digit by digit, you get three "1" and three "2".
+//// Therefore, you put three ones and three two's together.
+//// Remember to return a string.
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string lookAndSay(int n)
+{
+
+   vector<int>ans;
+
+   while(n)
+   {
+       int k=n%10;
+
+       ans.push_back(k);
+
+       n=n/10;
+   }
+
+
+   reverse(ans.begin(),ans.end());
+
+   if(ans.size()%2!=0)
+   {
+       return "invalid";
+   }
+   else
+   {
+       vector<int>even;
+       vector<int>odd;
+
+       for(int i=0;i<ans.size();i++)
+       {
+           if(i%2==0)
+           {
+               even.push_back(ans[i]);
+           }
+           else
+           {
+               odd.push_back(ans[i]);
+           }
+       }
+
+
+
+
+
+
+       string finalresult="";
+
+       for(int j=0;j<odd.size();j++)
+       {
+           string temp="";
+
+
+
+           for(int i=0;i<even[j];i++)
+           {
+
+               temp+=to_string(odd[j]);
+           }
+
+           finalresult+=temp;
+       }
+
+       return finalresult;
+
+   }
+
+
+
+}
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    cout<<lookAndSay(n);
+
+
+
+
+    return 0;
+}

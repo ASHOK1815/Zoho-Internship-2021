@@ -1,0 +1,144 @@
+//
+//Coins Combinations
+//Given an amount of money and an array of coins denominations, create a function that counts how many different ways you can make change with the given money.
+//
+//Examples
+//coinsCombinations(4, [1, 2]) ➞ 3
+//// 1+1+1+1 = 4
+//// 1+1+2 = 4
+//// 2+2 = 4
+//
+//coinsCombinations(10, [5, 2, 3]) ➞ 4
+//
+//coinsCombinations(11, [5, 7]) ➞ 0
+//Notes
+//Order of coins does not matter (i.e. 1+1+2 == 2+1+1).
+//You have an infinite amount of coins
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int coinsCombinations(std::vector<int> coins,int m,int n)
+{
+
+    if(n==0)
+    {
+        return 1;
+    }
+
+
+    if(n<0)
+    {
+        return 0;
+    }
+
+    if(m<=0 && n>=1)
+    {
+        return 0;
+    }
+
+
+	return coinsCombinations(coins,m-1,n)+coinsCombinations(coins,m,n-coins[m-1]);
+}
+
+int main()
+{
+    int money;
+    cout<<"Enter the money"<<endl;
+    cin>>money;
+
+
+    int n;
+    cout<<"Enter the size of the coins vector"<<endl;
+    cin>>n;
+
+
+    vector<int>coins;
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        coins.push_back(a);
+
+    }
+
+
+
+    cout<<coinsCombinations(coins,n,money);
+
+    return 0;
+}
+//
+//Coins Combinations
+//Given an amount of money and an array of coins denominations, create a function that counts how many different ways you can make change with the given money.
+//
+//Examples
+//coinsCombinations(4, [1, 2]) ➞ 3
+//// 1+1+1+1 = 4
+//// 1+1+2 = 4
+//// 2+2 = 4
+//
+//coinsCombinations(10, [5, 2, 3]) ➞ 4
+//
+//coinsCombinations(11, [5, 7]) ➞ 0
+//Notes
+//Order of coins does not matter (i.e. 1+1+2 == 2+1+1).
+//You have an infinite amount of coins
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int coinsCombinations(std::vector<int> coins,int m,int n)
+{
+
+    if(n==0)
+    {
+        return 1;
+    }
+
+
+    if(n<0)
+    {
+        return 0;
+    }
+
+    if(m<=0 && n>=1)
+    {
+        return 0;
+    }
+
+
+	return coinsCombinations(coins,m-1,n)+coinsCombinations(coins,m,n-coins[m-1]);
+}
+
+int main()
+{
+    int money;
+    cout<<"Enter the money"<<endl;
+    cin>>money;
+
+
+    int n;
+    cout<<"Enter the size of the coins vector"<<endl;
+    cin>>n;
+
+
+    vector<int>coins;
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        coins.push_back(a);
+
+    }
+
+
+
+    cout<<coinsCombinations(coins,n,money);
+
+    return 0;
+}

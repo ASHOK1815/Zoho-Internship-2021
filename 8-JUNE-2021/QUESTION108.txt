@@ -1,0 +1,74 @@
+//
+//Enter the Matrix
+//In this challenge, you have to obtain a sentence from the elements of a given matrix. In the matrix, each word of the sentence follows a columnar order from the top to the bottom, instead of the usual left-to-right order: it's time for transposition!
+//
+//Given a matrix mtx, implement a function that returns the complete sentence as a string, with the words separated by a space between them.
+//
+//Examples
+//transposeMatrix([
+//  ["Enter"],
+//  ["the"],
+//  ["Matrix!"]
+//]) ➞ "Enter the Matrix!"
+//
+//transposeMatrix([
+//  ["The", "are"],
+//  ["columns", "rows."]
+//]) ➞ "The columns are rows."
+//
+//transposeMatrix([
+//  ["You", "the"],
+//  ["must", "table"],
+//  ["transpose", "order."]
+//]) ➞ "You must transpose
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string transposeMatrix(std::vector<std::vector<std::string>> mtx)
+{
+	string finalresult="";
+	for(int j=0;j<mtx[0].size();j++)
+    {
+        for(int i=0;i<mtx.size();i++)
+        {
+            finalresult+=mtx[i][j];
+            finalresult+=" ";
+        }
+    }
+
+    return finalresult;
+}
+int main()
+{
+
+    int n,m;
+    cout<<"Enter the row and column"<<endl;
+    cin>>n>>m;
+
+
+    vector<vector<string>>mtx;
+
+
+    for(int i=0;i<n;i++)
+    {
+        vector<string>temp;
+
+        for(int j=0;j<m;j++)
+        {
+            string s;
+            cin>>s;
+            temp.push_back(s);
+        }
+        mtx.push_back(temp);
+    }
+
+
+    cout<<transposeMatrix(mtx);
+
+
+
+
+
+    return 0;
+}

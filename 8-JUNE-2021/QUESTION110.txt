@@ -1,0 +1,43 @@
+//
+//Algorithms II: The Euclidean Algorithm
+//Welcome to part two of the collection for Computer Science Algorithms. This challenge will deal further with writing recursive functions by covering the Euclidean Algorithm. The "Euclidean Algorithm" is a method for finding the greatest common divisor (GCD) of two numbers. It was originally described by the Greek mathematician Euclid.
+//
+//Algorithm
+//For the sake of simplicity I'll refer to the first number as "a", the second number as "b", and the remainder as "r". The algorithm can be broken down into four steps:
+//
+//Ensure that "a" >= "b". If "a" < "b", swap them.
+//Find the remainder. Divide "a" by "b" and set "r" as the remainder.
+//Is "r" zero? If so terminate the function and return "b" (the second number).
+//Set "a" = "b" and "b" = "r" and start the algorithm over again.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int euclidean(int a, int b)
+{
+    if(b==0)
+    {
+        return a;
+    }
+    else
+    {
+        return euclidean(b,a%b);
+    }
+
+}
+
+int main()
+{
+
+    int a,b;
+    cin>>a>>b;
+
+
+    cout<<euclidean(a,b);
+
+
+
+
+    return 0;
+}
