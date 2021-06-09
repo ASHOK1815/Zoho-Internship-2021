@@ -1,0 +1,119 @@
+//Goldbach Conjecture
+//Goldbach's Conjecture is amongst the oldest and well-known unsolved mathematical problems. In correspondence with Leonhard Euler in 1742, German mathematician Christian Goldbach made a conjecture, which states:
+//
+//"Every even whole number greater than 2 is the sum of two prime numbers."
+//
+//Even though it's been thoroughly tested and analyzed and seems to be true, it hasn't been proved yet (thus, remaining a conjecture.)
+//
+//Create a function that takes a number and returns an array as per the following rules:
+//
+//If the given number is odd and greater than two, return an empty array.
+//If the given number is even and greater than two, return an array of two prime numbers whose sum is the given input.
+//Both prime numbers must be the farthest (with the greatest difference).
+//Examples
+//goldbachConjecture(1) ➞ []
+//// The given number is not greater than 2.
+//
+//goldbachConjecture(7) ➞ []
+//// The given number is not an even number.
+//
+//goldbachConjecture(14) ➞ [3, 11]
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+
+
+std::vector<int> goldbachConjecture(int n)
+{
+     vector<int>ans;
+     vector<int>finalans;
+
+     if(n%2!=0)
+     {
+
+         if(n>2)
+         {
+             return ans;
+         }
+     }
+
+
+
+    bool prime[n + 1];
+    memset(prime, true, sizeof(prime));
+
+    for (int p = 2; p * p <= n; p++)
+    {
+
+        if (prime[p] == true)
+        {
+
+            for (int i = p * p; i <= n; i += p)
+            {
+
+                prime[i] = false;
+            }
+
+        }
+    }
+
+
+    for (int p = 2; p <= n; p++)
+    {
+         if (prime[p])
+         {
+               ans.push_back(p);
+         }
+
+
+    }
+
+    int mx=INT_MIN;
+    for(int i=0;i<ans.size();i++)
+    {
+        for(int j=i+1;j<ans.size();j++)
+        {
+            if(ans[i]+ans[j]==n)
+            {
+                if(mx<abs(ans[i]-ans[j]))
+                {
+                    finalans.clear();
+                    finalans.push_back(ans[i]);
+                    finalans.push_back(ans[j]);
+                    mx=max(mx,abs(ans[i]-ans[j]));
+                }
+
+            }
+        }
+    }
+
+
+
+
+	return finalans;
+}
+
+int main()
+{
+
+
+   int n;
+   cin>>n;
+
+   vector<int>ans=goldbachConjecture(n);
+
+
+   for(int i=0;i<ans.size();i++)
+   {
+       cout<<ans[i]<<" ";
+   }
+
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,89 @@
+//Find the Overlapping Range
+//For an array of ranges, find the maximum range that is contained in all the ranges. If there is no such range, return [].
+//
+//Examples
+//overlapping([[1, 7], [2, 8], [0, 4]]) ➞ [2, 4]
+//
+//overlapping([[5, 10], [2, 15], [10, 12]]) ➞ [10, 10]
+//
+//overlapping([[11, 18], [3, 7], [2, 20], [5, 16]]) ➞ []
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<int> overlapping(std::vector<std::vector<int>> arr)
+{
+
+    vector<int>Ans;
+    int mn=INT_MAX;
+    int mx=INT_MIN;
+
+
+      for(int i=0;i<arr.size();i++)
+      {
+          mn=min(arr[i][1],mn);
+          mx=max(arr[i][0],mx);
+      }
+
+
+      if(mn<mx)
+      {
+          return Ans;
+
+      }
+
+
+
+      Ans.push_back(mx);
+      Ans.push_back(mn);
+
+
+
+     return Ans;
+}
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+
+    vector<vector<int>>arr;
+
+
+
+    for(int i=0;i<n;i++)
+    {
+        vector<int>temp;
+
+        for(int j=0;j<2;j++)
+        {
+            int a;
+            cin>>a;
+            temp.push_back(a);
+        }
+        arr.push_back(temp);
+    }
+
+
+    vector<int>ans=overlapping(arr);
+
+    if(ans.size()==0)
+    {
+        cout<<"[]"<<endl;
+    }
+    else
+    {
+        for(int i=0;i<ans.size();i++)
+        {
+            cout<<ans[i]<<" ";
+        }
+
+    }
+
+
+
+    return 0;
+}

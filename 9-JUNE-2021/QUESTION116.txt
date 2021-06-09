@@ -1,0 +1,107 @@
+//
+//XOR Cipher
+//In XOR Cipher, encoding is done by an XOR operation on two given strings. If the strings are of different lengths then the output should be the length of the shorter string. Cut the length of the longer string to the same size as the smaller string before XOR operation.
+//
+//Given two strings of msg1 and msg2, return the encoded message.
+//
+//Examples
+//XORCipher("11", "22") ➞ "33"
+//// 11 XOR 22 = 33
+//
+//XORCipher("1020304", "403201") ➞ "501231"
+//
+//XORCipher("c611d9bdd9de38b9eb", "23a0745505d4d25494") ➞ "e5b1ade8dc0aeaed7f"
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string XORCipher(std::string msg1, std::string msg2)
+{
+     string ans="";
+
+     string temp="";
+     string other="";
+     int mn;
+
+     if(msg1.size()>msg2.size())
+     {
+         temp=msg2;
+         other=msg1;
+         mn=msg2.size();
+     }
+     else if(msg1.size()< msg2.size())
+     {
+         temp=msg1;
+         other=msg2;
+         mn=msg1.size();
+     }
+     else
+     {
+         temp=msg1;
+         other=msg2;
+         mn=msg1.size();
+     }
+
+
+     for(int i=0;i<temp.size();i++)
+     {
+
+         if((temp[i]>='0' && temp[i]<='9') && (other[i]>='0' && other[i]<='9'))
+         {
+             string check(1,temp[i]);
+             string check2(1,other[i]);
+             int a=atoi(check.c_str());
+             int b=atoi(check2.c_str());
+             a=a^b;
+             ans+=to_string(a);
+         }
+         else if((temp[i]>='0' && temp[i]<='9') && (other[i]>='a' && other[i]<='z'))
+         {
+             string check(1,temp[i]);
+             char value=other[i]+atoi(check.c_str());
+             ans+=value;
+
+         }
+         else if((temp[i]>='a' && temp[i]<='z') && (other[i]>='0' && other[i]<='9'))
+         {
+              string check(1,other[i]);
+              char value=temp[i]+atoi(check.c_str());
+              ans+=value;
+
+         }
+         else if((temp[i]>='a' && temp[i]<='z') && (other[i]>='a' && other[i]<='z'))
+         {
+
+              int a=temp[i];
+              int b=other[i];
+
+              a=a^b;
+
+               ans+=to_string(a);
+         }
+
+
+     }
+
+
+     return ans;
+}
+
+
+int main()
+{
+
+
+    string msg1,msg2;
+    cin>>msg1>>msg2;
+
+
+    cout<<XORCipher(msg1,msg2);
+
+
+
+
+
+    return 0;
+}
