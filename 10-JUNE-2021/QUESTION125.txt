@@ -1,0 +1,126 @@
+//Deadly Virus
+//Mubashir needs your help to identify the spread of a deadly virus. He can provide you with the following parameters:
+//
+//A two-dimensional array persons, containing affected persons 'V' and unaffected persons 'P'.
+//Number of hours n, each infected person is spreading the virus to one person up, down, left and right each hour.
+//Your function should return the updated array containing affected and unaffected persons after n hours.
+//
+//Examples
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<vector<char>> deadlyVirus(vector<vector<char>> persons, int n)
+{
+
+   while(n--)
+   {
+
+      vector<vector<char>>temp;
+      for(int i=0; i<persons.size(); i++)
+      {
+        std::vector<char> val;
+        for(int j=0; j<persons[0].size(); j++)
+        {
+                val.push_back(persons[i][j]);
+        }
+         temp.push_back(val);
+       }
+
+       int n1=persons.size();
+       int n2=persons[0].size();
+
+
+       for(int i=0;i<n1;i++)
+       {
+           for(int j=0;j<n2;j++)
+           {
+               if(persons[i][j]=='V')
+               {
+                   if(i>0)
+                   {
+                       temp[i-1][j]='V';
+                   }
+                   if(i<n1-1)
+                   {
+                       temp[i+1][j]='V';
+                   }
+                   if(j>0)
+                   {
+                       temp[i][j-1]='V';
+                   }
+                   if(j<n1-1)
+                   {
+                       temp[i][j+1]='V';
+                   }
+               }
+           }
+       }
+
+
+
+
+       persons=temp;
+
+
+
+
+
+
+
+   }
+
+
+   return persons;
+
+}
+
+
+int main()
+{
+
+    int n,m;
+    cout<<"Enter the row and column"<<endl;
+    cin>>n>>m;
+
+
+    vector<vector<char>>persons;
+
+
+    for(int i=0;i<n;i++)
+    {
+        vector<char>temp;
+        for(int j=0;j<m;j++)
+        {
+            char a;
+            cin>>a;
+            temp.push_back(a);
+        }
+
+        persons.push_back(temp);
+    }
+
+    int n1;
+    cout<<"ENTER THE NUMBER OF HOURS"<<endl;
+    cin>>n1;
+
+
+    vector<vector<char>>ans=deadlyVirus(persons,n1);
+
+
+    for(int i=0;i<ans.size();i++)
+    {
+        for(int j=0;j<ans[i].size();j++)
+        {
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,52 @@
+//Persistent Little Bugger
+//Create a function that takes a number and returns its multiplicative persistence,
+// which is the number of times you must multiply the digits in num until you reach a single digit.
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int bugger(int num)
+{
+	vector<int>arr;
+
+    int counter=0;
+
+    int incrementer=0;
+	while(counter!=1)
+    {
+        int value=1;
+        counter=0;
+        while(num)
+        {
+
+          arr.push_back(num%10);
+          value=value*(num%10);
+          num=num/10;
+          counter++;
+        }
+
+
+        num=value;
+
+        incrementer++;
+
+
+    }
+
+    return incrementer-1;
+}
+
+int main()
+{
+
+    int num;
+    cin>>num;
+
+    cout<<bugger(num);
+
+
+
+    return 0;
+}

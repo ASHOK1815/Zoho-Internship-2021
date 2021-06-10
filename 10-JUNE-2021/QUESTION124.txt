@@ -1,0 +1,89 @@
+//Maximum Occurrence
+//Given a string text. Write a function that returns the character with the highest frequency. If more than 1 character has the same highest frequency, return all those characters as an array. If there is no repetition in characters, return [].
+//
+//Examples
+//maxOccur("Computer Science") ➞ ['e']
+//
+//maxOccur("Edabit") ➞ []
+//
+//maxOccur("system admin") ➞ ['m', 's']
+//
+//maxOccur("the quick brown fox jumps over the lazy dog") ➞ [' ']
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::vector<char> maxOccur(std::string text)
+{
+
+   map<char,int>m;
+
+   vector<char>s;
+
+   for(int i=0;i<text.size();i++)
+   {
+       if(text[i]!=' ')
+       {
+         m[text[i]]++;
+       }
+
+   }
+
+   int mx=INT_MIN;
+   for(auto x:m)
+   {
+       mx=max(mx,x.second);
+
+   }
+
+
+
+   for(auto x:m)
+   {
+
+       if(x.second == mx)
+       {
+
+           s.push_back(x.first);
+       }
+   }
+
+
+
+
+   return s;
+
+
+}
+
+int main()
+{
+
+    string s;
+    cout<<"Enter the string"<<endl;
+    getline(cin,s);
+
+
+    vector<char>ans=maxOccur(s);
+
+    if(ans.size()==s.size())
+    {
+        cout<<"[]"<<endl;
+    }
+    else{
+
+        for(int i=0;i<ans.size();i++)
+        {
+            cout<<ans[i]<<" ";
+        }
+    }
+
+
+
+
+
+
+    return 0;
+}

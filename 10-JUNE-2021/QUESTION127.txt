@@ -1,0 +1,71 @@
+//
+//Polydivisible Numbers
+//
+//Mubashir was reading about Polydivisible Numbers on Wikipedia.
+//
+//In mathematics a Polydivisible Number (or magic number) is a number in a given number base with digits abcde... that has the following properties:
+//
+//Its first digit a is not 0.
+//The number formed by its first two digits ab is a multiple of 2.
+//The number formed by its first three digits abc is a multiple of 3.
+//The number formed by its first four digits abcd is a multiple of 4.
+//etc.
+//Create a function which takes an integer n and returns true if the given number is a Polydivisible Number and false otherwise.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+bool isPolydivisible(long n)
+{
+	vector<int>ans;
+
+
+	while(n)
+    {
+        int k=n%10;
+        ans.push_back(k);
+        n=n/10;
+
+    }
+
+    reverse(ans.begin(),ans.end());
+
+    int first=ans[0];
+
+    bool flag=true;
+    for(int i=1;i<ans.size();i++)
+    {
+        first=first*10+ans[i];
+
+        if(first%(i+1)!=0)
+        {
+            flag=false;
+            break;
+        }
+    }
+
+
+	return flag;
+
+}
+
+int main()
+{
+    long n;
+    cout<<"Enter the number"<<endl;
+    cin>>n;
+
+    if(isPolydivisible(n))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+}
