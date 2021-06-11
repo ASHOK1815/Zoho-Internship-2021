@@ -1,0 +1,81 @@
+//Replace Every Nth Instance of a Character
+//Create a function that takes a string and replaces every nth instance of oldChar with newChar. Your function will have four parameters:
+//
+//str — The original input text to be processed.
+//nth — The nth instance to be replaced.
+//oldChar — The character being replaced.
+//newChar — The character replacing oldChar.
+//In other words, if str is "abababa", nth is 3, oldChar is "a" and newChar is "Z", you would replace the 3rd insrtance of "a" with "Z", returning "ababZba".
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string replaceNth(std::string str, int nth, std::string oldChar, std::string newChar)
+{
+    if(nth==0)
+    {
+        return str;
+    }
+	char findvalue=str[nth-1];
+
+	int counter=0;
+
+	char value;
+	for(int i=0;i<newChar.size();i++)
+    {
+        value+=newChar[i];
+    }
+
+    cout<<findvalue<<endl;
+
+	for(int i=0;i<str.size();i++)
+    {
+        if(str[i]==findvalue)
+        {
+            counter++;
+        }
+
+        if(str[i]==findvalue && counter==nth)
+        {
+
+            str[i]=value;
+
+        }
+
+    }
+
+
+	return str;
+
+}
+
+int main()
+{
+
+    string s;
+    cout<<"Enter the string "<<endl;
+
+    getline(cin,s);
+
+    int n;
+    cout<<"Enter the nth value"<<endl;
+    cin>>n;
+
+    string old;
+    cout<<"Enter the oldchar string"<<endl;
+    cin>>old;
+
+
+    string newchar;
+    cout<<"Enter the newchar string"<<endl;
+    cin>>newchar;
+
+
+    cout<<replaceNth(s,n,old,newchar);
+
+
+
+
+    return 0;
+}

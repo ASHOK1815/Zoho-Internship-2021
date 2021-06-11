@@ -1,0 +1,96 @@
+//The Red/Yellow Sequence
+//Write a function that takes a number n and a string s as arguments and returns the nth term of the Red/Yellow sequence. s will ask the function what to return, all, red or yellow.
+//
+//alt text
+//
+//Examples
+//rySeq(2, "all") ➞ 5
+//
+//rySeq(3, "yellow") ➞ 8
+//
+//rySeq(28, "red") ➞ 55
+//
+//rySeq(1, "blue") ➞ -1
+//Notes
+//If s is not "all", "yellow" or "red", return -1.
+//If n is 0, return 0.
+//n is always a positive integer.
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int rySeq(int n, std::string s)
+{
+
+	if(s!="all" && s!="yellow"  && s!="red")
+    {
+        return -1;
+    }
+
+    if(n==0)
+    {
+
+        return 0;
+    }
+
+
+    int all=1;
+    int subcounter=1;
+
+    for(int i=1;i<n;i++)
+    {
+        all+=4*subcounter;
+        subcounter++;
+    }
+
+    int red=1;
+
+    int finalcounter=2;
+    for(int i=1;i<n;i++)
+    {
+
+        red+=finalcounter;
+
+
+    }
+
+
+     if(s=="red")
+     {
+         return red;
+     }
+     else if(s=="yellow")
+     {
+
+         return all-red;lue
+     }
+     else
+     {
+         return all;
+     }
+
+}
+
+int main()
+{
+
+    int n;
+    string s;
+    cout<<"Enter the number"<<endl;
+    cin>>n;
+
+    cout<<"Enter the string"<<endl;
+    cin>>s;
+
+
+
+    cout<<rySeq(n,s);
+
+
+
+
+
+    return 0;
+}

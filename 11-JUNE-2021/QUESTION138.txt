@@ -1,0 +1,119 @@
+//Persistence
+//The additive persistence of an integer, n, is the number of times you have to replace n with the sum of its digits until n becomes a single digit integer.
+//
+//The multiplicative persistence of an integer, n, is the number of times you have to replace n with the product of its digits until n becomes a single digit integer.
+//
+//Create two functions that take an integer as an argument and:
+//
+//Return its additive persistence.
+//Return its multiplicative persistence.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int additivePersistence(int n)
+{
+
+    int counter=0;
+
+    if(n%10==n)
+    {
+        return 0;
+    }
+
+    while(true)
+    {
+        int k=0;
+        while(n)
+        {
+
+           k+=n%10;
+
+           n=n/10;
+
+        }
+
+        n=k;
+        counter++;
+        if(n%10==n)
+        {
+            break;
+        }
+
+    }
+
+	return counter;
+}
+
+int multiplicativePersistence(unsigned long long int n)
+{
+
+    int counter=0;
+    if(n%10==n)
+    {
+        return 0;
+    }
+    while(true)
+    {
+        unsigned long long int k=1;
+
+        while(n)
+        {
+            k*=n%10;
+            n/=10;
+
+        }
+
+        n=k;
+
+        counter++;
+        if(n%10==n)
+        {
+            break;
+        }
+
+
+    }
+
+    return counter;
+
+
+}
+
+int main()
+{
+
+
+    cout<<"Enter 1 to go for additivePresistence"<<endl;
+    cout<<"Enter 2 to go for multiplicativePresistence"<<endl;
+    int choice;
+    cin>>choice;
+
+
+    if(choice==1)
+    {
+        int n;
+        cout<<"Enter the number"<<endl;
+        cin>>n;
+        cout<<additivePersistence(n);
+
+
+    }
+    else if(choice==2)
+    {
+        unsigned long long int n;
+        cout<<"Enter the number"<<endl;
+        cin>>n;
+        cout<<multiplicativePersistence(n);
+    }
+
+
+
+
+
+
+
+    return 0;
+}

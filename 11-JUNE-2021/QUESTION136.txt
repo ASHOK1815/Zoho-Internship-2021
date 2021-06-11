@@ -1,0 +1,117 @@
+//Triple + Double = So Much Trouble
+//
+//
+//Create a function that takes two integers and returns true if a digit repeats three times in a row at any place in num1 AND that same digit repeats two times in a row in num2.
+//
+//Examples
+//trouble(451999277, 41177722899) ➞ true
+//
+//trouble(1222345, 12345) ➞ false
+//
+//trouble(666789, 12345667) ➞ true
+//
+//trouble(33789, 12345337) ➞ false
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+
+bool trouble(int num1,int num2)
+{
+
+    cout<<num2<<endl;
+
+    string s1=to_string(num1);
+    string s2=to_string(num2);
+
+     map<char,int>m;
+
+     for(int i=0;i<s2.size();i++)
+     {
+         m[s2[i]]++;
+     }
+    char value;
+    for(int i=0;i<s1.size()-1;i++)
+    {
+        if(s1[i]==s1[i+1])
+        {
+            int counter=1;
+
+            while(s1[i]==s1[i+1] && i<s1.size())
+            {
+                counter++;
+                i++;
+
+            }
+
+            if(counter==3)
+            {
+                value=s1[i];
+                break;
+            }
+
+        }
+    }
+
+
+
+    if(m[value]==2)
+    {
+        return true;
+    }
+
+
+
+    return false;
+}
+
+
+int main()
+{
+
+    int n;
+    int m;
+
+    cout<<"Enter the first number"<<endl;
+    cin>>n;
+
+    cout<<"Enter the second number"<<endl;
+    cin>>m;
+
+
+
+    cout<<m<<endl;
+
+
+
+
+    if(trouble(n,m))
+    {
+
+        cout<<"True"<<endl;
+
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+//Next Prime
+//Given an integer, create a function that returns the next prime. If the number is prime, return the number itself.
+//
+//Examples
+//nextPrime(12) ➞ 13
+//
+//nextPrime(24) ➞ 29
+//
+//nextPrime(11) ➞ 11
+//// 11 is a prime, so we return the number itself.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isPrime(int n)
+{
+
+    if (n <= 1)
+        return false;
+
+
+    for (int i = 2; i < n; i++)
+        if (n % i == 0)
+            return false;
+
+    return true;
+}
+int nextPrime(int num)
+{
+    
+    int i=num;
+    int ans;
+    while(true)
+    {
+
+        if(isPrime(i))
+        {
+            ans=i;
+            break;
+        }
+
+        i++;
+    }
+
+	return ans;
+}
+
+int main()
+{
+    cout<<"Enter the number"<<endl;
+    int n;
+    cin>>n;
+
+    cout<<nextPrime(n);
+
+
+
+
+
+
+    return 0;
+}
