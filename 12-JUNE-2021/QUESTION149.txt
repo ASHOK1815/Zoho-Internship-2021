@@ -1,0 +1,168 @@
+//Happy Numbers
+//You are given an array of 0s and 1s, like the one below:
+//
+//[0, 1, 0, 0, 0, 1, 1, 1, 0, 1]
+//
+//// The first element, a 0, and the last element, a 1 are both unhappy.
+//// The second element, a 1 is unhappy.
+//// The second-to-last element, a 0 is unhappy.
+//// All other numbers in this array are happy.
+//A 1 is unhappy if the digit to its left and the digit to its right are both 0s. A 0 is unhappy if the digit to its left and the digit to its right are both 1s. If a number has only one neighbor, it is unhappy if its only neighbor is different. Otherwise, a number is happy.
+//
+//Write a function that takes in an array of 0s and 1s and outputs the portion of numbers which are happy. The total portion of numbers which are happy can be represented as:
+//
+//portion of happy numbers = (happy 0s + happy 1s) / total numbers
+//In the example above, 0.6 is the number of happy numbers.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+float portionHappy(std::vector<int> n)
+{
+
+    int j=n.size()-1;
+    float happies1=0;
+    float unhappy=0;
+    float happies0=0;
+
+    int i=0;
+
+    while(i<n.size())
+    {
+
+        if(i==0 && n[i]==0)
+        {
+
+
+            if(n[i+1]!=n[i])
+            {
+                unhappy++;
+
+            }
+            else
+            {
+                happies0++;
+
+            }
+
+        }
+        else if(i==0 && n[i]==1)
+        {
+             if(n[i+1]!=n[i])
+            {
+                unhappy++;
+
+            }
+            else
+            {
+                happies1++;
+
+            }
+
+        }
+        else if(i==n.size()-1 && n[i]==0)
+        {
+
+            if(n[i-1]!=n[i])
+            {
+                unhappy++;
+
+            }
+            else
+            {
+                happies0++;
+
+            }
+        }
+         else if(i==n.size()-1 && n[i]==1)
+        {
+
+            if(n[i-1]!=n[i])
+            {
+                unhappy++;
+
+            }
+            else
+            {
+                happies1++;
+
+            }
+        }
+        else
+        {
+
+            if(n[i]==0)
+            {
+
+                if(n[i-1]==1 && n[i+1]==1)
+                {
+                    unhappy++;
+
+                }
+                else
+                {
+                    happies0++;
+
+                }
+
+
+            }
+            else if(n[i]==1)
+            {
+                 if(n[i-1]==0 && n[i+1]==0)
+                {
+                    unhappy++;
+
+                }
+                else
+                {
+                    happies1++;
+
+                }
+
+            }
+
+
+
+        }
+
+
+
+        i++;
+
+
+    }
+
+
+
+    float ans=(happies0+happies1)/n.size();
+
+
+
+	return ans;
+}
+
+int main()
+{
+
+   int n;
+   cout<<"Enter the size of the vector"<<endl;
+   cin>>n;
+
+   vector<int>n1;
+   for(int i=0;i<n;i++)
+   {
+       int a;
+       cin>>a;
+       n1.push_back(a);
+   }
+
+
+    cout<<portionHappy(n1);
+
+
+
+    return 0;
+}

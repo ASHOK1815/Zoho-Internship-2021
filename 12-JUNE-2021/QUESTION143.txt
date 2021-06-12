@@ -1,0 +1,84 @@
+//Sum Consecutive Integers
+//Create a function that takes an array of integers (positive / negative) and return the sum of the numbers that repeat consecutively (return your result as an array).
+//
+//Examples
+//sumConsecutives([0, 7, 7, 7, 5, 4, 9, 9, 0]) ➞ [0, 21, 5, 4, 18, 0]
+//
+//sumConsecutives([4, 4, 5, 6, 8, 8, 8]) ➞ [8, 5, 6, 24]
+//
+//sumConsecutives([-5, -5, 7, 7, 12, 0]) ➞ [-10, 14, 12, 0]
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::vector<int> sumConsecutives(std::vector<int> arr)
+{
+    int i=0;
+
+    vector<int>ans;
+    while(i<arr.size())
+    {
+
+        if(arr[i]==arr[i+1])
+        {
+            int counter=1;
+
+            while(arr[i]==arr[i+1] && i<arr.size())
+            {
+               counter++;
+               i++;
+
+            }
+
+            ans.push_back(counter*arr[i]);
+        }
+        else
+        {
+            ans.push_back(arr[i]);
+        }
+
+         i++;
+
+    }
+
+
+    return ans;
+
+}
+
+int main()
+{
+
+
+    int n;
+    cout<<"Enter the size of the vector array"<<endl;
+    cin>>n;
+
+
+    vector<int>arr;
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        arr.push_back(a);
+    }
+
+
+    vector<int>ans=sumConsecutives(arr);
+
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+
+
+
+
+    return 0;
+}

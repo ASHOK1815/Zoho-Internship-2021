@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isModest(int num)
+{
+	string s=to_string(num);
+
+    bool flag=false;
+	for(int i=0;i<s.size();i++)
+	{
+	    string temp=s.substr(i,s.size());
+	    string temp1=s.substr(0,i);
+
+	    if(temp1.size()!=0)
+        {
+
+
+            if(num%atoi(temp.c_str()) == atoi(temp1.c_str()))
+            {
+                flag=true;
+                break;
+            }
+        }
+
+	}
+
+	return flag;
+}
+
+int main()
+{
+
+    int num;
+    cout<<"Enter the number"<<endl;
+    cin>>num;
+
+    if(isModest(num))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+    return 0;
+
+}

@@ -1,0 +1,94 @@
+//Reorder Digits
+//Create a function that reorders the digits of each numerical element in an array based on ascending (asc) or descending (desc) order.
+//
+//Examples
+//reorderDigits([515, 341, 98, 44, 211], "asc") ➞ [155, 134, 89, 44, 112]
+//
+//reorderDigits([515, 341, 98, 44, 211], "desc") ➞ [551, 431, 98, 44, 211]
+//
+//reorderDigits([63251, 78221], "asc") ➞ [12356, 12278]
+//
+//reorderDigits([63251, 78221], "desc") ➞ [65321, 87221]
+//
+//reorderDigits([1, 2, 3, 4], "asc")  ➞ [1, 2, 3, 4]
+//
+//reorderDigits([1, 2, 3, 4], "desc") ➞ [1, 2, 3, 4]
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<int> reorderDigits(std::vector<int> arr, std::string direction)
+{
+
+
+     vector<int>ans;
+
+     if(direction=="asc")
+     {
+
+         for(int i=0;i<arr.size();i++)
+         {
+             string k=to_string(arr[i]);
+             sort(k.begin(),k.end());
+
+             ans.push_back(atoi(k.c_str()));
+
+
+         }
+
+
+     }
+     else if(direction=="desc")
+     {
+
+         for(int i=0;i<arr.size();i++)
+         {
+             string k=to_string(arr[i]);
+             sort(k.begin(),k.end());
+             reverse(k.begin(),k.end());
+
+             ans.push_back(atoi(k.c_str()));
+
+
+         }
+
+     }
+
+
+	return ans;
+}
+
+int main()
+{
+
+   int n;
+   cout<<"Enter the size of arr vector"<<endl;
+   cin>>n;
+
+   vector<int>arr;
+
+
+   for(int i=0;i<n;i++)
+   {
+       int a;
+       cin>>a;
+       arr.push_back(a);
+   }
+
+   string direction;
+   cout<<"Enter the direction"<<endl;
+   cin>>direction;
+
+   vector<int>ans=reorderDigits(arr,direction);
+
+
+   for(int i=0;i<ans.size();i++)
+   {
+       cout<<ans[i]<<" ";
+   }
+
+
+
+    return 0;
+}

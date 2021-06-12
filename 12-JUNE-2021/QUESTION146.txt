@@ -1,0 +1,63 @@
+//Hole Number Sequence
+//What do the digits 0, 4, 6, 8, and 9 have in common? Well, they are whole numbers... and they are also hole numbers (not actually a thing until now). Hole numbers are numbers with holes in their shapes (8 is special in that it contains two holes).
+//
+//14 is a hole number with one hole. 88 is a hole number with four holes.
+//
+//Your task is to create a function with argument N that returns the sum of the holes for the integers n in the range of range 0 < n <= N.
+//
+//To illustrate, sumOfHoles(14) returns 7, because there are 7 holes in 4, 6, 8, 9, 10 and 14.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int sumOfHoles(int n)
+{
+	map<char,int>m;
+	vector<int>arr;
+	m['0']=1;
+	m['4']=1;
+	m['6']=1;
+	m['8']=2;
+	m['9']=1;
+
+	int holecounter=0;
+
+
+	for(int i=0;i<=n;i++)
+    {
+
+        string check=to_string(i);
+
+        for(int j=0;j<check.size();j++)
+        {
+
+            if(m[check[j]])
+            {
+                holecounter+=m[check[j]];
+
+        }
+
+
+
+       }
+
+    }
+
+
+	return holecounter-1;
+
+}
+
+int main()
+{
+   int n;
+   cout<<"Enter the number"<<endl;
+   cin>>n;
+
+
+   cout<<sumOfHoles(n);
+
+   return 0;
+}

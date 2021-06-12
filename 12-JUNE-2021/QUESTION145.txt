@@ -1,0 +1,105 @@
+//
+//Count the Smiley Faces :)
+//Create a function that takes an array of strings and return the number of smiley faces contained within it. These are the components that make up a valid smiley:
+//
+//A smiley has eyes. Eyes can be : or ;.
+//A smiley has a nose but it doesn't have to. A nose can be - or ~.
+//A smiley has a mouth which can be ) or D.
+//No other characters are allowed except for those mentioned above.
+//
+//Examples
+//countSmileys([":)", ";(", ";}", ":-D"]) ➞ 2
+//
+//countSmileys([";D", ":-(", ":-)", ";~)"]) ➞ 3
+//
+//countSmileys([";]", ":[", ";*", ":$", ";-D"]) ➞ 1
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+int countSmileys(std::vector<std::string> arr)
+{
+    if(arr.size()==0)
+    {
+        return 0;
+    }
+
+    int counter=0;
+    for(int i=0;i<arr.size();i++)
+    {
+        string s=arr[i];
+
+
+        if(s.size()==3)
+        {
+
+            if(s[0]==':' || s[0]==';')
+            {
+                if(s[1]=='-' || s[1]=='~')
+                {
+
+                    if(s[2]==')' || s[2]=='D')
+                    {
+                    
+                        counter++;
+                    }
+                }
+
+
+            }
+
+        }
+        else
+        {
+            if(s[0]==':' || s[0]==';')
+            {
+                if(s[1]==')' || s[1]=='D')
+                {
+
+                   
+                    counter++;
+                }
+
+
+            }
+
+        }
+
+
+    }
+
+
+
+    return counter;
+
+}
+
+int main()
+{
+
+
+   int n;
+   cout<<"Enter the size of the arr vector"<<endl;
+   cin>>n;
+
+
+   vector<string>arr;
+
+
+   for(int i=0;i<n;i++)
+   {
+       string s;
+       cin>>s;
+       arr.push_back(s);
+   }
+
+
+   cout<<countSmileys(arr);
+
+
+
+
+
+    return 0;
+}

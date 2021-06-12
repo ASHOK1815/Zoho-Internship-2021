@@ -1,0 +1,93 @@
+//In this challenge, you have to implement an algorithm to establish if a given positive integer num is a Happy number, and how many steps of the algorithm are needed to establish it.
+//
+//You have to repeatedly transform the given num into the sum of its squared digits:
+//
+//If after the transformation the new number is equal to 1, num is a Happy number and the algorithm stops.
+//If after the transformation, the new number is not equal to 1, you have to transform it again.
+//Happy Numbers
+//
+//If a number can't be reduced to 1, sooner or later the algorithm will enter into an infinitely repeating loop:
+//
+//... 20, 4, 16, 37, 58, 89, 145, 42, 20, 4 ...
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+std::string happyAlgorithm(int num)
+{
+     int counter=0;
+      bool flag=true;
+
+      map<int,int>m;
+
+      m[num]=1;
+      if(num==1)
+      {
+          return "HAPPY "+to_string(1);
+
+      }
+
+
+
+     while(num!=1)
+     {
+
+         int value=0;
+
+
+         while(num)
+         {
+
+             value+=(num%10)*(num%10);
+             num=num/10;
+
+         }
+
+
+
+         num=value;
+
+
+         counter++;
+
+         if(m[num])
+         {
+             flag=false;
+             break;
+         }
+         else
+         {
+             m[num]++;
+         }
+
+
+
+
+     }
+
+     if(flag)
+     {
+         return "HAPPY "+to_string(counter);
+     }
+
+
+
+
+   return "SAD "+to_string(counter);
+
+}
+
+
+int  main()
+{
+
+ int n;
+ cout<<"Enter the number"<<endl;
+ cin>>n;
+
+ cout<<happyAlgorithm(n);
+
+  return 0;
+}
