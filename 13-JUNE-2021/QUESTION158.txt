@@ -1,0 +1,56 @@
+//First Before Second Letter
+//You are given three inputs: a string, one letter, and a second letter.
+//
+//Write a function that returns true if every instance of the first letter occurs before every instance of the second letter.
+//
+//Examples
+//firstBeforeSecond("a rabbit jumps joyfully", 'a', 'j') ➞ true
+//// every instance of "a" occurs before every instance of "j"
+//
+//firstBeforeSecond("knaves knew about waterfalls", 'k', 'w') ➞  true
+//
+//firstBeforeSecond("happy birthday", 'a', 'y') ➞ false
+//// the "a" in "birthday" occurs after the "y" in "happy"
+//
+//firstBeforeSecond("precarious kangaroos", 'k', 'a') ➞ false
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool firstBeforeSecond(std::string s, std::string first, std::string second)
+{
+    int a = s.find_last_of(first);
+	int b = s.find_first_of(second);
+
+	return (a<b);
+
+}
+
+int main()
+{
+
+    string s;
+    cout<<"Enter the string"<<endl;
+    getline(cin,s);
+
+    string first,second;
+    cout<<"Enter the first string"<<endl;
+    cin>>first;
+
+    cout<<"Enter the second string"<<endl;
+    cin>>second;
+
+    if(firstBeforeSecond(s,first,second))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+}

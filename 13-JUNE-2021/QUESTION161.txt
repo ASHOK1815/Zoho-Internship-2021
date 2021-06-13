@@ -1,0 +1,182 @@
+//A Periodic Series
+//This challenge involves a series that can start with any string of digits. The next term in the series is found by adding the digits of the previous term, appending that sum to the previous term, and then truncating the leftmost digits so that the number of digits in the terms is always the same.
+//
+//Let's start with "1234". The sum of the digits is 10. Appending gives us "123410", then truncating the left two digits results in "3410". The next three terms are "4108", "0813", "1312". The series becomes periodic when a term that previously appeared occurs again.
+//
+//Example:
+//
+//"124", "247", "713", "311", "115", "157", "713", "311" ...
+//This series becomes periodic at a length of 6 before "713" reappears.
+//
+//Create a function whose argument is a digit string (the first term) and returns the length of the series when it first becomes periodic.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int periodic(int n)
+{
+
+    string temp=to_string(n);
+
+    int k=temp.size();
+
+
+    map<string,int>m;
+    m[temp]=1;
+
+    string temper=temp;
+    int fip=n;
+    while(true)
+    {
+
+
+
+        int sum=0;
+        while(fip)
+        {
+            sum+=fip%10;
+            fip/=10;
+        }
+
+        temper+=to_string(sum);
+
+
+        string newer="";
+
+        int counter=0;
+        int dummy=temper.size()-1;
+        while(counter!=k)
+        {
+            newer+=temper[dummy];
+            dummy--;
+            counter++;
+
+        }
+
+        reverse(newer.begin(),newer.end());
+
+
+
+        if(m[newer])
+        {
+            break;
+        }
+        else
+        {
+            m[newer]=1;
+        }
+
+        temper=newer;
+        fip=atoi(newer.c_str());
+
+    }
+
+
+    return m.size();
+
+}
+
+int main()
+{
+
+    int n;
+    cout<<"Enter the number"<<endl;
+    cin>>n;
+
+    cout<<periodic(n);
+
+    return 0;
+}
+//A Periodic Series
+//This challenge involves a series that can start with any string of digits. The next term in the series is found by adding the digits of the previous term, appending that sum to the previous term, and then truncating the leftmost digits so that the number of digits in the terms is always the same.
+//
+//Let's start with "1234". The sum of the digits is 10. Appending gives us "123410", then truncating the left two digits results in "3410". The next three terms are "4108", "0813", "1312". The series becomes periodic when a term that previously appeared occurs again.
+//
+//Example:
+//
+//"124", "247", "713", "311", "115", "157", "713", "311" ...
+//This series becomes periodic at a length of 6 before "713" reappears.
+//
+//Create a function whose argument is a digit string (the first term) and returns the length of the series when it first becomes periodic.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int periodic(int n)
+{
+
+    string temp=to_string(n);
+
+    int k=temp.size();
+
+
+    map<string,int>m;
+    m[temp]=1;
+
+    string temper=temp;
+    int fip=n;
+    while(true)
+    {
+
+
+
+        int sum=0;
+        while(fip)
+        {
+            sum+=fip%10;
+            fip/=10;
+        }
+
+        temper+=to_string(sum);
+
+
+        string newer="";
+
+        int counter=0;
+        int dummy=temper.size()-1;
+        while(counter!=k)
+        {
+            newer+=temper[dummy];
+            dummy--;
+            counter++;
+
+        }
+
+        reverse(newer.begin(),newer.end());
+
+
+
+        if(m[newer])
+        {
+            break;
+        }
+        else
+        {
+            m[newer]=1;
+        }
+
+        temper=newer;
+        fip=atoi(newer.c_str());
+
+    }
+
+
+    return m.size();
+
+}
+
+int main()
+{
+
+    int n;
+    cout<<"Enter the number"<<endl;
+    cin>>n;
+
+    cout<<periodic(n);
+
+    return 0;
+}

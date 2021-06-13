@@ -1,0 +1,140 @@
+//Basic Pig Latin Translation
+//Create a function that takes a string of words and moves the first letter of each word to the end of it, then adds "ay" to the end of the word. This is called "Pig Latin" and it gets more complicated than the rules in this particular challenge. I've intentionally kept things simple, otherwise this would turn into an extremely tedious challenge.
+//
+//Move the first letter of each word to the end of the word.
+//Add "ay" to the end of the word.
+//Words starting with a vowel (A, E, I, O, U) simply have "WAY" appended to the end.
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::string pigLatin(std::string s)
+{
+
+
+
+     int i=0;
+
+     string temp="";
+
+     map<char,int>m;
+
+     m['a']=1;
+     m['e']=1;
+     m['i']=1;
+     m['o']=1;
+     m['u']=1;
+
+      bool flag=true;
+      string finalans="";
+     while(s[i]!='.')
+     {
+
+         if(s[i]==' ')
+         {
+
+
+             if(m[temp[0]])
+             {
+                 if(flag)
+                 {
+                     temp[0]=toupper(temp[0]);
+                     flag=false;
+                 }
+
+                 temp+="way";
+
+                 finalans+=temp;
+                 finalans+=" ";
+             }
+             else
+             {
+                 string value=temp.substr(1,temp.size());
+
+                 if(m[temp[0]])
+                 {
+                     if(flag)
+                     {
+                         value[0]=toupper(value[0]);
+                         flag=false;
+                     }
+
+                   value+="ay";
+                   finalans+=value;
+                   finalans+=" ";
+                 }
+                 else
+                 {
+                     if(flag)
+                     {
+                         value[0]=toupper(value[0]);
+                         flag=false;
+                     }
+                     value+=tolower(temp[0]);
+                     value+="ay";
+
+                     finalans+=value;
+                     finalans+=" ";
+                 }
+
+
+             }
+
+
+             temp="";
+
+         }
+         else
+         {
+            temp+=s[i];
+          }
+
+
+         if(s[i+1]=='.')
+         {
+             if(m[temp[0]])
+             {
+                 temp+="way";
+
+                 finalans+=temp;
+                 finalans+=" ";
+             }
+             else
+             {
+                 string value=temp.substr(1,temp.size());
+
+                 value+=tolower(temp[0]);
+                 value+="ay";
+                 finalans+=value;
+                 finalans+=" ";
+
+
+             }
+
+             temp="";
+         }
+
+
+         i++;
+
+     }
+
+
+
+
+    return finalans;
+
+}
+
+int main()
+{
+
+    string s;
+    getline(cin,s);
+
+    cout<<pigLatin(s);
+
+    return 0;
+}

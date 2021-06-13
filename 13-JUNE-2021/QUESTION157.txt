@@ -1,0 +1,144 @@
+//
+//Tally Marks
+//Create a function that can convert from normal notation to tally-mark notation and vice versa. In tally-mark notation, a number can be decomposed as the sum of 5s + remainder.
+//
+//The function will look like this: switchNotation([current scores], desired notation)
+//
+//Ex.1 Normal: 3, 24, 4, 9
+//Ex.1 Tally: 3, 55554, 4, 54
+//
+//Ex.2 Normal: 2, 12, 2, 4
+//Ex.2 Tally: 2, 552, 2, 4
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::vector<int> switchNotation(std::vector<int> scores, std::string desired_notation) {
+
+	vector<int>Ans;
+	if(desired_notation=="tally")
+    {
+        for(int i=0;i<scores.size();i++)
+        {
+            if(scores[i]<=5)
+            {
+                Ans.push_back(scores[i]);
+            }
+            else
+            {
+                int counter=0;
+                string temp="";
+                while(counter<scores[i])
+                {
+                    if(counter+5>=scores[i])
+                    {
+                        break;
+                    }
+                    temp+=to_string(5);
+                    counter+=5;
+                }
+
+
+
+                temp+=to_string(scores[i]-counter);
+
+                Ans.push_back(atoi(temp.c_str()));
+            }
+        }
+
+
+    }
+    else if(desired_notation=="normal")
+    {
+
+        for(int i=0;i<scores.size();i++)
+        {
+
+            if(scores[i]<=5)
+            {
+                Ans.push_back(scores[i]);
+            }
+            else
+            {
+                 int counter=0;
+
+                 int j=0;
+                 string temp=to_string(scores[i]);
+                 string rest="";
+                 while(temp[j]!='\0')
+                 {
+                     if(temp[j]=='5')
+                     {
+                         counter++;
+                     }
+                     else
+                     {
+                         rest+=temp[j];
+                     }
+
+
+
+
+
+                     j++;
+                 }
+
+                 int finalans=counter*5+atoi(rest.c_str());
+
+                 Ans.push_back(finalans);
+            }
+
+
+        }
+
+
+
+    }
+
+
+	return Ans;
+
+
+}
+
+int main()
+{
+
+    int n;
+    cout<<"Enter the size of the scores vector"<<endl;
+    cin>>n;
+
+
+    vector<int>scores;
+
+
+    for(int i=0;i<n;i++)
+    {
+        int a;
+        cin>>a;
+        scores.push_back(a);
+    }
+
+    string desired;
+    cout<<"Enter the desired notation"<<endl;
+    cin>>desired;
+
+
+    vector<int>ans=switchNotation(scores,desired);
+
+
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+
+
+
+
+
+
+
+    return 0;
+}

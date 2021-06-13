@@ -1,0 +1,81 @@
+//Number of Leap Years
+//Given a range of years as a string, return the number of leap years there are within the range (inclusive).
+//
+//Examples
+//numLeapYears("1980-1984") ➞ 2
+//// 1980 and 1984 are leapyears.
+//
+//numLeapYears("2000-2020") ➞ 6
+//
+//numLeapYears("1600-2000") ➞ 101
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int numLeapYears(std::string years)
+{
+
+    string starting="";
+    string ending="";
+
+    int i=0;
+    bool flag=true;
+    while(years[i]!='\0')
+    {
+
+        if(years[i]=='-')
+        {
+
+            flag=false;
+            i++;
+            continue;
+        }
+
+        if(flag)
+        {
+            starting+=years[i];
+        }
+        else
+        {
+            ending+=years[i];
+        }
+
+        i++;
+    }
+
+    int initial=atoi(starting.c_str());
+    int finally=atoi(ending.c_str());
+
+  
+
+    int counter=0;
+    for(int i=initial;i<=finally;i++)
+    {
+
+        if(i%4==0)
+        {
+            counter++;
+        }
+    }
+
+
+    return counter;
+
+
+}
+int main()
+{
+
+   string s;
+   cin>>s;
+
+   cout<<numLeapYears(s);
+
+
+
+
+
+    return 0;
+}

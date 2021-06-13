@@ -1,0 +1,44 @@
+//Let's Meet!
+//From point A, an object is moving towards point B at constant
+// velocity va (in km/hr). From point B, another object is moving towards point A at constant velocity vb (in km/hr). Knowing this and the distance between point A and B (in km), write a function that returns how much time passes until both objects meet.
+//
+//Format the output like this:
+//
+//"2h 23min 34s"
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string letsMeet(float distance, int va, int vb)
+{
+
+
+	float value=float(distance)/(va+vb);
+
+
+	float finalans=60*(value-(int)value);
+
+	return to_string((int)value)+"h "+to_string((int)finalans)+"min "+to_string((int)(60*(finalans-(int)finalans)))+"s";
+
+
+}
+int main()
+{
+
+   float num;
+   cout<<"Enter the starting number"<<endl;
+   cin>>num;
+
+    int va,vb;
+    cout<<"Enter the starting velocity of a"<<endl;
+    cin>>va;
+
+    cout<<"Enter the starting velocity of b"<<endl;
+    cin>>vb;
+
+    cout<<letsMeet(num,va,vb);
+
+    return 0;
+}
