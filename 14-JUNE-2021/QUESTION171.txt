@@ -1,0 +1,72 @@
+// Sum of Positive Integers
+
+// Create a function that takes a string containing integers as well as other characters and return the sum of the positive integers only.
+// Examples
+
+// positiveSum("-12#-33 13%14&-11") ➞ 27
+// // 13 + 14 = 27
+
+// positiveSum("22 13%14&-11-22 13 12 0") ➞ 74
+// // 22 + 13 + 14 + 13 + 12 = -33
+
+// Notes
+
+//     There is at least one positive integer.
+//     Each integer is separated by a space, #, %, &, etc.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int positiveSum(std::string s) 
+{
+   
+    vector<int>ans;
+    for(int i=0;i<s.size();i++)
+    { 
+        if((s[i]>='0' && s[i]<='9') && (s[i+1]>='0' && s[i+1]<='9'))
+        {       
+                string temp="";     
+                if(s[i-1]!='-')
+                {
+                      temp+=s[i];
+                      temp+=s[i+1];
+                      ans.push_back(atoi(temp.c_str()));
+                }
+
+            
+                i++;
+
+        }
+
+        if(s[i]>='0' && s[i+1]=='\0')
+        {
+            string temp=""; 
+            temp+=s[i];
+            ans.push_back(atoi(temp.c_str()));
+
+        }
+    }
+  
+     int sum=0;
+     for(int i=0;i<ans.size();i++)
+     {
+         sum+=ans[i];
+     }
+
+
+    return sum;
+}
+
+
+int main()
+{
+
+   string str;
+   getline(cin,str);
+
+
+   cout<<positiveSum(str);
+
+    return 0;
+}
+

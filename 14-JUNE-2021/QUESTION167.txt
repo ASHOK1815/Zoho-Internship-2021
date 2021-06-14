@@ -1,0 +1,50 @@
+//Get the Excel Column
+//
+//Excel column names are in the following format:
+//
+//A, B, ..., Z, AA, ..., AZ, BA, ..., ZZ, AAA, AAB, ...
+//
+//Write a function that returns the column number from the row name.
+//Examples
+//
+//column("A") ➞ 1
+//
+//column("Z") ➞ 26
+//
+//column("AA") ➞ 27
+//
+//column("BA") ➞ 53
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int column(std::string str)
+{
+
+	int finalans=0;
+
+	for(int i=0;i<str.size();i++)
+    {
+        finalans*=26;
+        finalans+=str[i]-'A'+1;
+
+    }
+
+
+
+	return finalans;
+
+}
+
+int main()
+{
+
+  string str;
+  cout<<"Enter the string"<<endl;
+  cin>>str;
+
+  cout<<column(str);
+  return 0;
+}

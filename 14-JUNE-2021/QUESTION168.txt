@@ -1,0 +1,114 @@
+//Convert "Zero" and "One" to "1" and "0"
+//
+//Create a function that takes a string as an argument. The function must return a string containing 1s and 0s based on the string argument's words. If any word in the argument is not equal to "zero" or "one" (case insensitive), you should ignore it. The returned string's length should be a multiple of 8, if the string is not a multiple of 8 you should remove the numbers in excess.
+//Examples
+//
+//textToNumberBinary("zero one zero one zero one zero one") ➞ "01010101"
+//
+//textToNumberBinary("Zero one zero ONE zero one zero one") ➞ "01010101"
+//
+//textToNumberBinary("zero one zero one zero one zero one one two") ➞ "01010101"
+//
+//textToNumberBinary("zero one zero one zero one zero three") ➞ ""
+//
+//textToNumberBinary("one one") ➞ ""
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string textToNumberBinary(std::string s)
+{
+
+   vector<string>v;
+   map<string,char>m;
+   m["zero"]='0';
+   m["one"]='1';
+   s+=" ";
+
+   int i=0;
+   string temp="";
+   while(s[i]!='\0')
+   {
+
+       if(s[i]==' ')
+       {
+
+           if(temp=="zero" || temp=="one")
+           {
+               v.push_back(temp);
+           }
+
+           temp="";
+
+       }
+       else
+       {
+           temp+=tolower(s[i]);
+
+
+       }
+
+
+       i++;
+   }
+
+
+   if(v.size()<8)
+   {
+       return "";
+   }
+
+   string finalans="";
+
+   if(v.size()%8==0)
+   {
+       for(int i=0;i<v.size();i++)
+       {
+            finalans+=m[v[i]];
+       }
+   }
+   else
+   {
+
+       int k=v.size()%8;
+
+       int finalsize=v.size()-k;
+
+
+       for(int i=0;i<finalsize;i++)
+       {
+          finalans+=m[v[i]];
+       }
+
+
+   }
+
+
+
+
+   return finalans;
+
+}
+
+int main()
+{
+
+    string s;
+    getline(cin,s);
+
+
+    string ans=textToNumberBinary(s);
+
+    if(ans.size()==0)
+    {
+        cout<<"Empty"<<endl;
+    }
+    else
+    {
+        cout<<ans<<endl;
+    }
+
+    return 0;
+}

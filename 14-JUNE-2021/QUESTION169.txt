@@ -1,0 +1,74 @@
+//Valid Rondo Form?
+//
+//Rondo Form is a type of musical structure, in which there is a recurring theme/refrain, notated as A. Here are the rules for valid rondo forms:
+//
+//    Rondo forms always start and end with an A section.
+//    In between the A sections, there should be contrasting sections notated as B, then C, then D, etc... No letter should be skipped.
+//    There shouldn't be any repeats in the sequence (such as ABBACCA).
+//
+//Create a function which validates whether a given string is a valid Rondo Form.
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool validRando(string str){
+    int n=str.size();
+    if(str[0]!='A' || str[n-1]!='A')
+    {
+        return false;
+    }
+    int arr[26]={0};
+    int t=int(str[0])-65;
+    arr[t]++;
+    char prev=str[0];
+    for(int i=1;i<n;i++)
+    {
+        int x=int(str[i])-65;
+        arr[x]++;
+        if((str[i])==prev){
+            return false;
+        }
+        else{
+            prev=str[i];
+        }
+    }
+    int loc=0;
+    for(int i=n-1;i>0;i--)
+    {
+        if(arr[i]!=0)
+        {
+            loc=i;
+            break;
+        }
+    }
+
+    for(int i=0;i<=loc;i++)
+    {
+        if(arr[i]==0)
+        {
+         return false;
+        }
+    }
+    return true;
+}
+int main()
+{
+     string str;
+     cout<<"Enter the string"<<endl;
+     cin>>str;
+
+     if(validRando(str))
+     {
+         cout<<"True"<<endl;
+     }
+     else
+     {
+         cout<<"False"<<endl;
+     }
+
+    return 0;
+}
+

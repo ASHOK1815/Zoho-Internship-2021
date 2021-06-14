@@ -1,0 +1,68 @@
+//Is the Sequence Linear, Quadratic or Cubic?
+//
+//Create a function that determines if a given sequence is linear, quadratic or cubic. The input will be an array of numbers of varying lengths. The function should return "Linear", "Quadratic" or "Cubic".
+//Examples
+//
+//seqLevel([1, 2, 3, 4, 5]) ➞ "Linear"
+//
+//seqLevel([3, 6, 10, 15, 21]) ➞ "Quadratic"
+//
+//seqLevel([4, 14, 40, 88, 164]) ➞ "Cubic"
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string seqLevel(std::vector<int> arr)
+{
+    vector<int>temp(arr.size()-1);
+
+
+	for(int i=0;i<arr.size();i++)
+    {
+        temp[i]=arr[i+1]-arr[i];
+    }
+
+    if(temp[0]==temp[1])
+    {
+        return "Linear";
+    }
+    else if((temp[1]-temp[0])==(arr[2]-arr[1]))
+    {
+        return "Quadratic";
+    }
+    else
+    {
+        return "Cubic";
+    }
+}
+
+int main()
+{
+
+  int n;
+  cout<<"Enter the size of the arr vector"<<endl;
+  cin>>n;
+
+  vector<int>arr;
+  for(int i=0;i<n;i++)
+  {
+      int a;
+      cin>>a;
+      arr.push_back(a);
+  }
+
+
+  cout<<seqLevel(arr);
+
+
+
+
+
+
+
+
+
+    return 0;
+}

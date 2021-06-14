@@ -1,0 +1,74 @@
+//Changing a String into camelCase
+//Using Camel Case (or camelCase) is where the first word is in lower case, and all words after it have their first letter capitalised. Note that there are no spaces in between words!
+//
+//Create a function that takes a string and returns it back in camelCase.
+//
+//Examples
+//camelCasing("Hello World") ➞ "helloWorld"
+//
+//camelCasing("snake_case") ➞ "snakeCase"
+//
+//camelCasing("low high_HIGH") ➞ "lowHighHigh"
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string camelCasing(std::string s)
+{
+   string finalans="";
+
+   bool flag=true;
+   for(int i=0;i<s.size();i++)
+   {
+
+      if((s[i]>=65 && s[i]<=90 ) && flag)
+      {
+          s[i]+=32;
+          finalans+=s[i];
+          flag=false;
+      }
+      else if(s[i]=='_'  && flag)
+      {
+          s[i+1]=toupper(s[i+1]);
+          flag=false;
+
+      }
+      else if(s[i]==' ' && flag)
+      {
+          s[i+1]=toupper(s[i+1]);
+          flag=false;
+      }
+      else
+      {
+          if(s[i]!=' ' && s[i]!='_')
+          {
+              finalans+=s[i];
+          }
+      }
+
+
+   }
+
+
+
+	return finalans;
+}
+
+int main()
+{
+
+   string s;
+   cout<<"Enter the string"<<endl;
+   getline(cin,s);
+
+   cout<<camelCasing(s);
+
+
+
+
+
+    return 0;
+}
