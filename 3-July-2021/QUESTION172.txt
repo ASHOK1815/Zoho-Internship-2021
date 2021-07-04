@@ -1,0 +1,73 @@
+//YouTube Video ID Extractor
+//
+//Given a YouTube URL, extract the video ID and return it as a string.
+//Examples
+//
+//youtubeId("https://www.youtube.com/watch?v=XPEr1cArWRg") ➞ "XPEr1cArWRg"
+//
+//youtubeId("https://youtu.be/BCDEDi5gDPo") ➞ "BCDEDi5gDPo"
+//
+//youtubeId("https://youtube.com/watch?t=4m40s&v=vxP3bY-XxY4") ➞ "vxP3bY-XxY4"
+//
+//Notes
+//
+//All input are valid YouTube links.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string youtubeId(std::string s)
+{
+	string temp="";
+	for(int i=s.size()-1;i>=0;i--)
+    {
+        if(s[i]=='/')
+        {
+            break;
+        }
+        else
+        {
+            temp+=s[i];
+        }
+    }
+
+
+    reverse(temp.begin(),temp.end());
+
+     string finalans="";
+     if(temp[0]=='w')
+     {
+         for(int i=temp.size()-1;i>=0;i--)
+         {
+             if(temp[i]=='=')
+             {
+                 break;
+             }
+             finalans+=temp[i];
+
+         }
+
+         reverse(finalans.begin(),finalans.end());
+         return finalans;
+     }
+
+	return temp;
+}
+
+
+int main()
+{
+
+    string link;
+    getline(cin,link);
+
+    cout<<youtubeId(link);
+
+
+
+
+
+    return 0;
+}

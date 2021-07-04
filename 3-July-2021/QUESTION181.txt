@@ -1,0 +1,101 @@
+//Single Letter Swaps
+//Given an array of strings and an original string, write a function to output an array of zeroes and ones - 1 if the word can be formed from the original word by swapping two letters only once and 0 otherwise.
+//
+//Examples
+//validateSwaps(["BACDE", "EBCDA", "BCDEA", "ACBED"], "ABCDE")
+//➞ [1, 1, 0, 0]
+//
+//// Swap "A" and "B" from "ABCDE" to get "BACDE".
+//// Swap "A" and "E" from "ABCDE" to get "EBCDA".
+//// Both "BCDEA" and "ACBED" cannot be formed from "ABCDE" using only a single swap.
+//
+//validateSwaps(["32145", "12354", "15342", "12543"], "12345")
+//➞ [1, 1, 1, 1]
+//
+//validateSwaps(["9786", "9788", "97865", "7689"], "9768")
+//➞ [1, 0, 0, 0]
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+std::vector<int> validateSwaps(std::vector<std::string> arr, std::string s)
+{
+	vector<int>ans;
+
+
+	for(int i=0;i<arr.size();i++)
+    {
+        string temp=arr[i];
+        int counter=0;
+        if(temp.size()==s.size())
+        {
+            for(int j=0;j<s.size();j++)
+            {
+                if(s[j]!=temp[j])
+                {
+                    counter++;
+                }
+            }
+
+            if(counter==2)
+            {
+                ans.push_back(1);
+            }
+            else{
+
+               ans.push_back(0);
+            }
+
+        }
+        else
+
+        {
+            ans.push_back(0);
+        }
+
+
+
+
+    }
+
+
+	return ans;
+}
+int main()
+{
+
+
+   int n;
+   cout<<"Enter the size of the vector string"<<endl;
+   cin>>n;
+
+   vector<string>arr;
+
+
+   for(int i=0;i<n;i++)
+   {
+       string a;
+       cin>>a;
+       arr.push_back(a);
+   }
+
+
+   string str;
+   cout<<"Enter the new string"<<endl;
+   cin>>str;
+
+
+   vector<int>ans=validateSwaps(arr,str);
+
+   for(int i=0;i<ans.size();i++)
+   {
+       cout<<ans[i]<<" ";
+   }
+
+
+
+
+   return 0;
+}

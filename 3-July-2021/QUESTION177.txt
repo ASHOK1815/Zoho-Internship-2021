@@ -1,0 +1,100 @@
+//Abbreviations Unique?
+//
+//You are given two inputs:
+//
+//    An array of abbreviations.
+//    An array of words.
+//
+//Write a function that returns true if each abbreviation uniquely identifies a word, and false otherwise.
+//Examples
+//
+//uniqueAbbrev(["ho", "h", "ha"], ["house", "hope", "happy"]) ➞ false
+//// "ho" and "h" are ambiguous and can identify either "house" or "hope"
+//
+//uniqueAbbrev(["s", "t", "v"], ["stamina", "television", "vindaloo"]) ➞ true
+//
+//uniqueAbbrev(["bi", "ba", "bat"], ["big", "bard", "battery"]) ➞ false
+//
+//uniqueAbbrev(["mo", "ma", "me"], ["moment", "many", "mean"]) ➞ true
+
+
+#include<bits/stdc++.h>
+
+
+using namespace std;
+
+bool uniqueAbbrev(std::vector<std::string> abbs, std::vector<std::string> words)
+{
+
+    int m=words.size();
+    vector<int> check(m,0);
+
+    for(int i=0;i<abbs.size();i++)
+    {
+        int x=abbs[i].size();
+
+        for(int j=0;j<m;j++)
+        {
+            string s=words[j].substr(0,x);
+            if(s==abbs[i] && check[j]==0)
+            {
+                check[j]=1;
+            }
+            else if(s==abbs[i] && check[j]==1)
+            {
+                return false;
+            }
+        }
+
+    }
+    return true;
+
+
+}
+
+int main()
+{
+
+    int n;
+    cout<<"Enter the size of the abbs vector"<<endl;
+    cin>>n;
+
+    vector<string>abbs;
+
+
+    for(int i=0;i<n;i++)
+    {
+        string a;
+        cin>>a;
+        abbs.push_back(a);
+    }
+
+
+    int m;
+    cout<<"Enter the size of the words vector"<<endl;
+    cin>>m;
+
+    vector<string>words;
+
+
+    for(int i=0;i<m;i++)
+    {
+        string a;
+        cin>>a;
+        words.push_back(a);
+    }
+
+
+
+    if(uniqueAbbrev(abbs,words))
+    {
+        cout<<"True"<<endl;
+    }
+    else
+    {
+        cout<<"False"<<endl;
+    }
+
+
+    return 0;
+}

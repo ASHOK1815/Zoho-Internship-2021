@@ -1,0 +1,65 @@
+//Mangle the String
+
+//Create a function that takes a string and replaces every letter with the letter following it in the alphabet ("c" becomes "d", "z" becomes "a", "b" becomes "c", etc). Then capitalize every vowel (a, e, i, o, u) and return the new modified string.
+//
+//Examples
+//mangle("Fun times!") ➞ "GvO Ujnft!"
+//
+//mangle("The quick brown fox.") ➞ "UIf rvjdl cspxO gpy."
+//
+//mangle("Omega") ➞ "Pnfhb"
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string mangle(std::string str)
+{
+
+    string temp="";
+    map<char,int>vowel;
+    vowel['a']=1;
+    vowel['e']=1;
+    vowel['i']=1;
+    vowel['o']=1;
+    vowel['u']=1;
+
+
+    for(int i=0;i<str.size();i++)
+    {
+
+        if((str[i]>='a' && str[i]<='z') || (str[i]>='A' && str[i]<='Z'))
+        {
+             if(vowel[str[i]+1])
+            {
+                temp+=toupper(str[i]+1);
+            }
+            else
+            {
+                temp+=(str[i]+1);
+            }
+
+
+        }
+        else
+        {
+             temp+=str[i];
+        }
+    }
+
+
+	return temp;
+}
+
+int main()
+{
+
+    string str;
+    cout<<"Enter the string"<<endl;
+    getline(cin,str);
+
+    cout<<mangle(str);
+
+    return 0;
+}

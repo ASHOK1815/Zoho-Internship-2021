@@ -1,0 +1,86 @@
+//Express Number in Expanded Notation
+//
+//Create a function that takes a number and return a string with the number in expanded notation (AKA expanded form). See the resources tab for details on expanded notation.
+//Examples
+//
+//expand(13) ➞ "10 + 3"
+//
+//expand(86) ➞ "80 + 6"
+//
+//expand(17000000) ➞ "10000000 + 7000000"
+//
+//expand(5325) ➞ "5000 + 300 + 20 + 5"
+
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string expand(int num)
+{
+
+   vector<int>v;
+   while(num)
+   {
+       v.push_back(num%10);
+       num=num/10;
+   }
+
+   reverse(v.begin(),v.end());
+
+
+
+   string finalans="";
+   for(int i=0;i<v.size();i++)
+   {
+       if(v[i]!=0 && i!=v.size()-1)
+       {
+           finalans+=to_string(v[i]);
+           for(int j=i+1;j<v.size();j++)
+           {
+               finalans+="0";
+
+           }
+
+           finalans+=" + ";
+           continue;
+
+       }
+       if(v[i]==0 && i!=0)
+       {
+           continue;
+
+       }
+       else
+       {
+           finalans+=to_string(v[i]);
+       }
+   }
+
+
+   if(finalans[finalans.size()-2]=='+')
+   {
+
+       return finalans.substr(0,finalans.size()-2);
+   }
+
+	return finalans;
+}
+
+int main()
+{
+
+    int n;
+    cin>>n;
+
+    cout<<expand(n);
+
+
+
+
+
+
+    return 0;
+}

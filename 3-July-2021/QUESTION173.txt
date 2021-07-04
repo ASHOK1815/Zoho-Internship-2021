@@ -1,0 +1,76 @@
+//How Many Unique Styles?
+//
+//There are many different styles of music and many albums exhibit multiple styles. Create a function that takes an array of musical styles from albums and returns how many styles are unique.
+//Examples
+//
+//uniqueStyles([
+//  "Dub,Dancehall",
+//  "Industrial,Heavy Metal",
+//  "Techno,Dubstep",
+//  "Synth-pop,Euro-Disco",
+//  "Industrial,Techno,Minimal"
+//]) ➞ 9
+//
+//uniqueStyles([
+//  "Soul",
+//  "House,Folk",
+//  "Trance,Downtempo,Big Beat,House",
+//  "Deep House",
+//  "Soul"
+//]) ➞ 7
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int uniqueStyle(vector<string> & arr)
+{
+
+    set<string> st;
+    int n=arr.size();
+
+    vector<string> results;
+
+    for(int i=0;i<n;i++)
+     {
+        string words=arr[i];
+        stringstream  ss(words);
+        string str;
+        while (getline(ss, str, ','))
+          {
+            results.push_back(str);
+          }
+      }
+
+
+        for (auto word : results)
+        {
+            st.insert(word);
+        }
+        return st.size();
+
+
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter the size of the vector"<<endl;
+    cin>>n;
+
+    vector<string>arr;
+
+
+    for(int i=0;i<n;i++)
+    {
+        string s;
+        getline(cin,s);
+
+        arr.push_back(s);
+    }
+
+
+    cout<<uniqueStyle(arr);
+
+
+ return 0;
+}

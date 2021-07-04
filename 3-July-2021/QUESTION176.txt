@@ -1,0 +1,92 @@
+//Truncate String at a Given Length
+//
+//Create a function that takes a string (the string to truncate) and a number (the maximum length of the truncated string) as arguments and returns the truncated string at the given length.
+//Examples
+//
+//truncate("Lorem ipsum dolor sit amet.", 11) ➞ "Lorem ipsum"
+//
+//truncate("Lorem ipsum dolor sit amet.", 16) ➞ "Lorem ipsum"
+//
+//truncate("Lorem ipsum dolor sit amet.", 17) ➞ "Lorem ipsum dolor"
+
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+std::string truncate(std::string str, int length)
+{
+
+    vector<string>s;
+
+
+    int i=0;
+
+    string temp="";
+    while(str[i]!='.')
+    {
+        if(str[i]==' ')
+        {
+
+
+            s.push_back(temp);
+            temp="";
+
+        }
+        else
+        {
+
+            temp+=str[i];
+        }
+
+
+        if(str[i+1]=='.')
+        {
+            s.push_back(temp);
+        }
+
+        i++;
+
+    }
+
+    string finalans="";
+    for(int i=0;i<s.size();i++)
+    {
+        string j=s[i];
+
+        if((finalans+j).size()<=length)
+        {
+            finalans+=j;
+            finalans+=" ";
+        }
+        else
+        {
+            break;
+        }
+
+    }
+
+
+    return finalans;
+
+}
+
+int main()
+{
+
+    string str;
+    cout<<"Enter the string"<<endl;
+    getline(cin,str);
+
+
+    int length;
+    cout<<"Enter the length"<<endl;
+    cin>>length;
+
+
+    cout<<truncate(str,length);
+
+
+    return 0;
+}
